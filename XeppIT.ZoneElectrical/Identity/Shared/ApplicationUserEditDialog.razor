@@ -1,0 +1,130 @@
+﻿@using XeppIT.ZoneElectrical.Identity.Services
+@using Microsoft.AspNetCore.Identity
+@using System.Threading
+@inject AdminIdentityService AdminIdentityService
+@inject DialogService DialogService
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12 mb-1">
+            <label for="DisplayName" class="form-check-label">Display Name</label>
+            <input id="DisplayName" class="form-control mb-3" type="text" aria-label="DisplayName" @bind-value="@UserToEdit.DisplayName">
+        </div>
+        <div class="col-12 mb-1">
+            <label for="Email" class="form-check-label">Email</label>
+            <input id="Email" class="form-control mb-3" type="text" aria-label="Email" @bind-value="@UserToEdit.Email">
+        </div>
+        <div class="col-12 form-check form-check-inline">
+            <div class="mr-3">
+                <input class="form-check-input" type="checkbox" value="" id="Administrator" @bind="AdministratorIsChecked">
+                <label class="form-check-label" for="Administrator">Admin</label>
+            </div>
+            <div class="mr-3">
+                <input class="form-check-input" type="checkbox" value="" id="Employee" @bind="EmployeeIsChecked">
+                <label class="form-check-label" for="Employee">Employee</label>
+            </div>
+            <div class="mr-3">
+                <input class="form-check-input" type="checkbox" value="" id="Customer" @bind="CustomerIsChecked">
+                <label class="form-check-label" for="Customer">Customer</label>
+            </div>
+            <div class="mr-3">
+                <input class="form-check-input" type="checkbox" value="" id="Basic" @bind="BasicIsChecked">
+                <label class="form-check-label" for="Basic">BasicAccess</label>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <button type="button" class="btn btn-primary" @onclick="() => Save()">Save</button>
+        <button type="button" class="btn btn-secondary ml-1" @onclick="() => Cancel()">Cancel</button>
+    </div>
+</div>
+
+@code {
+    [Parameter] public ApplicationUser UserToEdit { get; set; }
+
+
+    public bool AdministratorIsChecked { get; set; }
+
+    public bool EmployeeIsChecked { get; set; }
+
+    public bool CustomerIsChecked { get; set; }
+
+    public bool BasicIsChecked { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit,"Admin"))
+        {
+            AdministratorIsChecked = true;
+        }
+
+        if (await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit, "Employee"))
+        {
+            EmployeeIsChecked = true;
+        }
+
+        if (await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit, "Customer"))
+        {
+            CustomerIsChecked = true;
+        }
+
+        if (await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit, "Basic"))
+        {
+            BasicIsChecked = true;
+        }
+
+        StateHasChanged();
+    }
+
+    async Task Save()
+    {
+        if (AdministratorIsChecked)
+        {
+
+            await AdminIdentityService.UserManager.AddToRoleAsync(UserToEdit, "Admin");
+        }
+        else
+        {
+            await AdminIdentityService.UserManager.RemoveFromRoleAsync(UserToEdit, "Admin");
+        }
+
+        if (EmployeeIsChecked)
+        {
+
+            await AdminIdentityService.UserManager.AddToRoleAsync(UserToEdit, "Employee");
+        }
+        else
+        {
+            await AdminIdentityService.UserManager.RemoveFromRoleAsync(UserToEdit, "Employee");
+        }
+
+        if (CustomerIsChecked)
+        {
+
+            await AdminIdentityService.UserManager.AddToRoleAsync(UserToEdit, "Customer");
+        }
+        else
+        {
+            await AdminIdentityService.UserManager.RemoveFromRoleAsync(UserToEdit, "Customer");
+        }
+
+        if (BasicIsChecked)
+        {
+
+            await AdminIdentityService.UserManager.AddToRoleAsync(UserToEdit, "Basic");
+        }
+        else
+        {
+            await AdminIdentityService.UserManager.RemoveFromRoleAsync(UserToEdit, "Basic");
+        }
+
+        var result = await AdminIdentityService.UpdateUser(UserToEdit);
+        DialogService.Close();
+    }
+
+    void Cancel()
+    {
+        DialogService.Close();
+    }
+}

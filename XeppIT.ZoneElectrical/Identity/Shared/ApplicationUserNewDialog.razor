@@ -1,0 +1,41 @@
+﻿@using XeppIT.ZoneElectrical.Identity.Services
+@inject AdminIdentityService AdminIdentityService
+@inject DialogService DialogService
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <label for="DisplayName" class="form-check-label">Display Name</label>
+        <input id="DisplayName" class="form-control mb-3" type="text" aria-label="Display Name" @bind-value="@_newUser.DisplayName">
+    </div>
+    <div class="row mb-3">
+        <label for="UserName" class="form-check-label">User Name</label>
+        <input id="UserName" class="form-control mb-3" type="text" aria-label="User Name" @bind-value="@_newUser.UserName">
+    </div>
+    <div class="row mb-3">
+        <label for="Email" class="form-check-label">Email</label>
+        <input id="Email" class="form-control mb-3" type="text" aria-label="Email" @bind-value="@_newUser.Email">
+    </div>
+    <div class="row mb-3">
+        <label for="Password" class="form-check-label">Password</label>
+        <input id="Password" class="form-control mb-3" type="text" aria-label="Password" @bind-value="@_newUser.PasswordHash">
+    </div>
+    <div class="row justify-content-end">
+        <button type="button" class="btn btn-primary" @onclick="() => Save()">Save</button>
+        <button type="button" class="btn btn-secondary ml-1" @onclick="() => Cancel()">Cancel</button>
+    </div>
+</div>
+
+@code {
+    ApplicationUser _newUser = new ApplicationUser();
+
+    async Task Save()
+    {
+        await AdminIdentityService.CreateUser(_newUser);
+        DialogService.Close();
+    }
+
+    void Cancel()
+    {
+        DialogService.Close();
+    }
+}

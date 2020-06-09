@@ -82,13 +82,10 @@ namespace XeppIT.ZoneElectrical.Identity
 
         public async Task<IdentityResult> UpdateAsync(ApplicationUser user, CancellationToken cancellationToken)
         {
-            var replaceOptions = new ReplaceOptions() { BypassDocumentValidation = false, IsUpsert = false};
-
             var result =
-                await _applicationUserCollection.ReplaceOneAsync(filter: 
-                    x => x.Id == user.Id, 
+                await _applicationUserCollection.ReplaceOneAsync(x => x.Id.Equals(user.Id), 
                     user, 
-                    replaceOptions, 
+                    new ReplaceOptions(), 
                     cancellationToken);
 
             if (!result.IsModifiedCountAvailable || !result.IsAcknowledged) return IdentityResult.Failed();

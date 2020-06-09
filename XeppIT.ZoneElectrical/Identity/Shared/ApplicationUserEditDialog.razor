@@ -79,42 +79,42 @@
 
     async Task Save()
     {
-        if (AdministratorIsChecked)
+        if (AdministratorIsChecked && !await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit, "Admin"))
         {
 
             await AdminIdentityService.UserManager.AddToRoleAsync(UserToEdit, "Admin");
         }
-        else
+        else if (!AdministratorIsChecked && await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit, "Admin"))
         {
             await AdminIdentityService.UserManager.RemoveFromRoleAsync(UserToEdit, "Admin");
         }
 
-        if (EmployeeIsChecked)
+        if (EmployeeIsChecked && !await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit, "Employee"))
         {
 
             await AdminIdentityService.UserManager.AddToRoleAsync(UserToEdit, "Employee");
         }
-        else
+        else if (!EmployeeIsChecked && await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit, "Employee"))
         {
             await AdminIdentityService.UserManager.RemoveFromRoleAsync(UserToEdit, "Employee");
         }
 
-        if (CustomerIsChecked)
+        if (CustomerIsChecked && !await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit, "Customer"))
         {
 
             await AdminIdentityService.UserManager.AddToRoleAsync(UserToEdit, "Customer");
         }
-        else
+        else if (!CustomerIsChecked && await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit, "Customer"))
         {
             await AdminIdentityService.UserManager.RemoveFromRoleAsync(UserToEdit, "Customer");
         }
 
-        if (BasicIsChecked)
+        if (BasicIsChecked && !await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit, "Basic"))
         {
 
             await AdminIdentityService.UserManager.AddToRoleAsync(UserToEdit, "Basic");
         }
-        else
+        else if (!BasicIsChecked && await AdminIdentityService.UserManager.IsInRoleAsync(UserToEdit, "Basic"))
         {
             await AdminIdentityService.UserManager.RemoveFromRoleAsync(UserToEdit, "Basic");
         }

@@ -65,5 +65,145 @@ namespace XeppIT.ZoneElectrical.Project
 
             return result.DeletedCount > 0;
         }
+
+        public async Task<bool> AddProjectManagerAsync(ProjectModel project, ProjectContact projectManager)
+        {
+            project.ProjectManager = projectManager;
+
+            var result =
+                await _projectCollection.ReplaceOneAsync(x => x.Id.Equals(project.Id),
+                    project,
+                    new ReplaceOptions());
+
+            if (!result.IsModifiedCountAvailable || !result.IsAcknowledged) return false;
+
+            return result.ModifiedCount > 0;
+        }
+
+        public async Task<bool> RemoveProjectManagerAsync(ProjectModel project)
+        {
+            project.ProjectManager = null;
+
+            var result =
+                await _projectCollection.ReplaceOneAsync(x => x.Id.Equals(project.Id),
+                    project,
+                    new ReplaceOptions());
+
+            if (!result.IsModifiedCountAvailable || !result.IsAcknowledged) return false;
+
+            return result.ModifiedCount > 0;
+        }
+
+        public async Task<bool> AddDesignerAsync(ProjectModel project, ProjectContact designer)
+        {
+            project.Designer = designer;
+
+            var result =
+                await _projectCollection.ReplaceOneAsync(x => x.Id.Equals(project.Id),
+                    project,
+                    new ReplaceOptions());
+
+            if (!result.IsModifiedCountAvailable || !result.IsAcknowledged) return false;
+
+            return result.ModifiedCount > 0;
+        }
+
+        public async Task<bool> RemoveDesignerAsync(ProjectModel project)
+        {
+            project.Designer = null;
+
+            var result =
+                await _projectCollection.ReplaceOneAsync(x => x.Id.Equals(project.Id),
+                    project,
+                    new ReplaceOptions());
+
+            if (!result.IsModifiedCountAvailable || !result.IsAcknowledged) return false;
+
+            return result.ModifiedCount > 0;
+        }
+
+        public async Task<bool> AddQuantitySurveyorAsync(ProjectModel project, ProjectContact quantitySurveyor)
+        {
+            project.QuantitySurveyor = quantitySurveyor;
+
+            var result =
+                await _projectCollection.ReplaceOneAsync(x => x.Id.Equals(project.Id),
+                    project,
+                    new ReplaceOptions());
+
+            if (!result.IsModifiedCountAvailable || !result.IsAcknowledged) return false;
+
+            return result.ModifiedCount > 0;
+        }
+
+        public async Task<bool> RemoveQuantitySurveyorAsync(ProjectModel project)
+        {
+            project.QuantitySurveyor = null;
+
+            var result =
+                await _projectCollection.ReplaceOneAsync(x => x.Id.Equals(project.Id),
+                    project,
+                    new ReplaceOptions());
+
+            if (!result.IsModifiedCountAvailable || !result.IsAcknowledged) return false;
+
+            return result.ModifiedCount > 0;
+        }
+
+        public async Task<bool> AddSiteManagerAsync(ProjectModel project, ProjectContact siteManager)
+        {
+            project.SiteManager = siteManager;
+
+            var result =
+                await _projectCollection.ReplaceOneAsync(x => x.Id.Equals(project.Id),
+                    project,
+                    new ReplaceOptions());
+
+            if (!result.IsModifiedCountAvailable || !result.IsAcknowledged) return false;
+
+            return result.ModifiedCount > 0;
+        }
+
+        public async Task<bool> RemoveSiteManagerAsync(ProjectModel project)
+        {
+            project.SiteManager = null;
+
+            var result =
+                await _projectCollection.ReplaceOneAsync(x => x.Id.Equals(project.Id),
+                    project,
+                    new ReplaceOptions());
+
+            if (!result.IsModifiedCountAvailable || !result.IsAcknowledged) return false;
+
+            return result.ModifiedCount > 0;
+        }
+
+        public async Task<bool> AddProjectAddressAsync(ProjectModel project, ProjectAddress projectAddress)
+        {
+            project.ProjectAddress = projectAddress;
+
+            var result =
+                await _projectCollection.ReplaceOneAsync(x => x.Id.Equals(project.Id),
+                    project,
+                    new ReplaceOptions());
+
+            if (!result.IsModifiedCountAvailable || !result.IsAcknowledged) return false;
+
+            return result.ModifiedCount > 0;
+        }
+
+        public async Task<bool> RemoveProjectAddressAsync(ProjectModel project)
+        {
+            project.ProjectAddress = null;
+
+            var result =
+                await _projectCollection.ReplaceOneAsync(x => x.Id.Equals(project.Id),
+                    project,
+                    new ReplaceOptions());
+
+            if (!result.IsModifiedCountAvailable || !result.IsAcknowledged) return false;
+
+            return result.ModifiedCount > 0;
+        }
     }
 }

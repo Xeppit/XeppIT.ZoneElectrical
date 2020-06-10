@@ -11,7 +11,7 @@ using XeppIT.ZoneElectrical.Project.Models;
 namespace XeppIT.ZoneElectrical.UnitTests
 {
     [TestFixture()]
-    public class ProjectTests
+    public class ProjectManagerTests
     {
         private readonly string _testingConnectionString = $"mongodb://root:admin@192.168.0.13:27017";
         private IMongoCollection<ProjectModel> _projectCollection;
@@ -94,6 +94,32 @@ namespace XeppIT.ZoneElectrical.UnitTests
             };
 
             return project;
+        }
+
+        private ProjectContact GenerateTestProjectContact()
+        {
+            var contact = new ProjectContact()
+            {
+                FirstName = Guid.NewGuid().ToString(),
+                LastName = Guid.NewGuid().ToString(),
+                Email = Guid.NewGuid().ToString(),
+                PhoneNumber = Guid.NewGuid().ToString(),
+                Company = Guid.NewGuid().ToString()
+            };
+
+            return contact;
+        }
+        private ProjectAddress GenerateTestProjectAddress()
+        {
+            var projectAddress = new ProjectAddress()
+            {
+                Name = Guid.NewGuid().ToString(),
+                Street = Guid.NewGuid().ToString(),
+                Town = Guid.NewGuid().ToString(),
+                PostCode = Guid.NewGuid().ToString()
+            };
+
+            return projectAddress;
         }
 
         [Test]
@@ -234,6 +260,165 @@ namespace XeppIT.ZoneElectrical.UnitTests
             Assert.IsTrue(deleteResult, "Delete Result Fail");
             // Check the new models work description with the old description
             Assert.IsTrue(findResult == null, "Find Result Fail");
+        }
+
+        [Test]
+        public async Task Add_Remove_ProjectManagerAsync_Test()
+        {
+            // Arrange
+            var newProject1 = GenerateTestProjectModel();
+            newProject1.ProjectManager = new ProjectContact();
+            await _projectManager.CreateProjectAsync(newProject1);
+
+            var newTestContact = GenerateTestProjectContact();
+
+            // Act
+            var AddResult = await _projectManager.AddProjectManagerAsync(newProject1, newTestContact);
+            var findResult = await _projectManager.FindByProjectNumberAsync(newProject1.JobNo);
+
+            // Assert
+            // Check the method returned true
+            Assert.IsTrue(AddResult, "Add Result Fail");
+            // Check the retrieved model with the new value
+            Assert.IsTrue(findResult.ProjectManager.FirstName == newTestContact.FirstName, "Find Result Fail - Add");
+
+            // Act
+            var removeResult = await _projectManager.RemoveProjectManagerAsync(newProject1);
+            var findResult2 = await _projectManager.FindByProjectNumberAsync(newProject1.JobNo);
+
+
+            // Assert
+            // Check the Update method returned true
+            Assert.IsTrue(removeResult, "Remove Result Fail");
+            // Check the retrieved model had null value
+            Assert.IsTrue(findResult2.ProjectManager == null, "Find Result Fail - Remove");
+        }
+
+        [Test]
+        public async Task Add_Remove_DesignerAsync_Test()
+        {
+            // Arrange
+            var newProject1 = GenerateTestProjectModel();
+            newProject1.ProjectManager = new ProjectContact();
+            await _projectManager.CreateProjectAsync(newProject1);
+
+            var newTestContact = GenerateTestProjectContact();
+
+            // Act
+            var AddResult = await _projectManager.AddDesignerAsync(newProject1, newTestContact);
+            var findResult = await _projectManager.FindByProjectNumberAsync(newProject1.JobNo);
+
+            // Assert
+            // Check the method returned true
+            Assert.IsTrue(AddResult, "Add Result Fail");
+            // Check the retrieved model with the new value
+            Assert.IsTrue(findResult.Designer.FirstName == newTestContact.FirstName, "Find Result Fail - Add");
+
+            // Act
+            var removeResult = await _projectManager.RemoveDesignerAsync(newProject1);
+            var findResult2 = await _projectManager.FindByProjectNumberAsync(newProject1.JobNo);
+
+
+            // Assert
+            // Check the Update method returned true
+            Assert.IsTrue(removeResult, "Remove Result Fail");
+            // Check the retrieved model had null value
+            Assert.IsTrue(findResult2.Designer == null, "Find Result Fail - Remove");
+        }
+
+        [Test]
+        public async Task Add_Remove_QuantitySurveyorAsync_Test()
+        {
+            // Arrange
+            var newProject1 = GenerateTestProjectModel();
+            newProject1.QuantitySurveyor = new ProjectContact();
+            await _projectManager.CreateProjectAsync(newProject1);
+
+            var newTestContact = GenerateTestProjectContact();
+
+            // Act
+            var AddResult = await _projectManager.AddQuantitySurveyorAsync(newProject1, newTestContact);
+            var findResult = await _projectManager.FindByProjectNumberAsync(newProject1.JobNo);
+
+            // Assert
+            // Check the method returned true
+            Assert.IsTrue(AddResult, "Add Result Fail");
+            // Check the retrieved model with the new value
+            Assert.IsTrue(findResult.QuantitySurveyor.FirstName == newTestContact.FirstName, "Find Result Fail - Add");
+
+            // Act
+            var removeResult = await _projectManager.RemoveQuantitySurveyorAsync(newProject1);
+            var findResult2 = await _projectManager.FindByProjectNumberAsync(newProject1.JobNo);
+
+
+            // Assert
+            // Check the Update method returned true
+            Assert.IsTrue(removeResult, "Remove Result Fail");
+            // Check the retrieved model had null value
+            Assert.IsTrue(findResult2.QuantitySurveyor == null, "Find Result Fail - Remove");
+        }
+
+        [Test]
+        public async Task Add_Remove_SiteManagerAsync_Test()
+        {
+            // Arrange
+            var newProject1 = GenerateTestProjectModel();
+            newProject1.SiteManager = new ProjectContact();
+            await _projectManager.CreateProjectAsync(newProject1);
+
+            var newTestContact = GenerateTestProjectContact();
+
+            // Act
+            var AddResult = await _projectManager.AddSiteManagerAsync(newProject1, newTestContact);
+            var findResult = await _projectManager.FindByProjectNumberAsync(newProject1.JobNo);
+
+            // Assert
+            // Check the Update method returned true
+            Assert.IsTrue(AddResult, "Add Result Fail");
+            // Check the retrieved model with the new value
+            Assert.IsTrue(findResult.SiteManager.FirstName == newTestContact.FirstName, "Find Result Fail - Add");
+
+            // Act
+            var removeResult = await _projectManager.RemoveSiteManagerAsync(newProject1);
+            var findResult2 = await _projectManager.FindByProjectNumberAsync(newProject1.JobNo);
+
+
+            // Assert
+            // Check the Update method returned true
+            Assert.IsTrue(removeResult, "Remove Result Fail");
+            // Check the retrieved model had null value
+            Assert.IsTrue(findResult2.SiteManager == null, "Find Result Fail - Remove");
+        }
+
+        [Test]
+        public async Task Add_Remove_ProjectAddressAsync_Test()
+        {
+            // Arrange
+            var newProject1 = GenerateTestProjectModel();
+            newProject1.ProjectAddress = new ProjectAddress();
+            await _projectManager.CreateProjectAsync(newProject1);
+
+            var newTestProjectAddress = GenerateTestProjectAddress();
+
+            // Act
+            var AddResult = await _projectManager.AddProjectAddressAsync(newProject1, newTestProjectAddress);
+            var findResult = await _projectManager.FindByProjectNumberAsync(newProject1.JobNo);
+
+            // Assert
+            // Check the method returned true
+            Assert.IsTrue(AddResult, "Add Result Fail");
+            // Check the retrieved model with the new value
+            Assert.IsTrue(findResult.ProjectAddress.Name == newTestProjectAddress.Name, "Find Result Fail - Add");
+
+            // Act
+            var removeResult = await _projectManager.RemoveProjectAddressAsync(newProject1);
+            var findResult2 = await _projectManager.FindByProjectNumberAsync(newProject1.JobNo);
+
+            // Assert
+            // Check the method returned true
+            Assert.IsTrue(removeResult, "Remove Result Fail");
+            // Check the retrieved model had null value
+            Assert.IsTrue(findResult2.ProjectAddress == null, "Find Result Fail - Remove");
         }
     }
 }

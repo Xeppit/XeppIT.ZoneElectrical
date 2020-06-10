@@ -123,13 +123,42 @@ namespace XeppIT.ZoneElectrical.UnitTests
         }
 
         [Test]
+        public async Task GetNextJobNumberAsync_Test()
+        {
+            // Arrange
+            var newProject1 = GenerateTestProjectModel();
+            var newProject2 = GenerateTestProjectModel();
+            var newProject3 = GenerateTestProjectModel();
+            var newProject4 = GenerateTestProjectModel();
+            var newProject5 = GenerateTestProjectModel();
+
+            await _projectManager.CreateProjectAsync(newProject1, 1);
+            await _projectManager.CreateProjectAsync(newProject2, 2);
+            await _projectManager.CreateProjectAsync(newProject3, 3);
+            await _projectManager.CreateProjectAsync(newProject4, 4065);
+            await _projectManager.CreateProjectAsync(newProject5, 5);
+
+            // Act
+            var result = await _projectManager.GetNextJobNumberAsync();
+
+            // Assert
+            // Check the method returned = 6
+            Assert.IsTrue(result == 4066, $"Wrong result returned, {result}");
+        }
+
+        [Test]
         public async Task CreateProjectAsync_Test()
         {
             var newProject = GenerateTestProjectModel();
 
-            await _projectManager.CreateProjectAsync(newProject);
+            var nextJobNumber = await _projectManager.GetNextJobNumberAsync();
 
-            Assert.Pass();
+            newProject.JobNo = await _projectManager.CreateProjectAsync(newProject);
+
+            var result = await _projectManager.FindByProjectNumberAsync(nextJobNumber);
+
+            Assert.IsTrue(result != null);
+            Assert.IsTrue(result.JobNo == nextJobNumber);
         }
 
         [Test]
@@ -140,7 +169,7 @@ namespace XeppIT.ZoneElectrical.UnitTests
             Random random = new Random();
             var jobNo = random.Next(1000, 9000);
 
-            await _projectManager.CreateProjectAsync(newProject, jobNo);
+            newProject.JobNo = await _projectManager.CreateProjectAsync(newProject, jobNo);
 
             var result = await _projectManager.FindByProjectNumberAsync(jobNo);
 
@@ -172,7 +201,7 @@ namespace XeppIT.ZoneElectrical.UnitTests
         {
             var newProject = GenerateTestProjectModel();
 
-            await _projectManager.CreateProjectAsync(newProject);
+            newProject.JobNo = await _projectManager.CreateProjectAsync(newProject);
 
             var result = await _projectManager.FindByProjectNumberAsync(newProject.JobNo);
 
@@ -209,11 +238,11 @@ namespace XeppIT.ZoneElectrical.UnitTests
             var newProject4 = GenerateTestProjectModel();
             var newProject5 = GenerateTestProjectModel();
 
-            await _projectManager.CreateProjectAsync(newProject1);
-            await _projectManager.CreateProjectAsync(newProject2);
-            await _projectManager.CreateProjectAsync(newProject3);
-            await _projectManager.CreateProjectAsync(newProject4);
-            await _projectManager.CreateProjectAsync(newProject5);
+            newProject1.JobNo = await _projectManager.CreateProjectAsync(newProject1);
+            newProject2.JobNo = await _projectManager.CreateProjectAsync(newProject2);
+            newProject3.JobNo = await _projectManager.CreateProjectAsync(newProject3);
+            newProject4.JobNo = await _projectManager.CreateProjectAsync(newProject4);
+            newProject5.JobNo = await _projectManager.CreateProjectAsync(newProject5);
 
             // Act
             // Save old work description to compare
@@ -244,11 +273,11 @@ namespace XeppIT.ZoneElectrical.UnitTests
             var newProject4 = GenerateTestProjectModel();
             var newProject5 = GenerateTestProjectModel();
 
-            await _projectManager.CreateProjectAsync(newProject1);
-            await _projectManager.CreateProjectAsync(newProject2);
-            await _projectManager.CreateProjectAsync(newProject3);
-            await _projectManager.CreateProjectAsync(newProject4);
-            await _projectManager.CreateProjectAsync(newProject5);
+            newProject1.JobNo = await _projectManager.CreateProjectAsync(newProject1);
+            newProject2.JobNo = await _projectManager.CreateProjectAsync(newProject2);
+            newProject3.JobNo = await _projectManager.CreateProjectAsync(newProject3);
+            newProject4.JobNo = await _projectManager.CreateProjectAsync(newProject4);
+            newProject5.JobNo = await _projectManager.CreateProjectAsync(newProject5);
 
             // Act
             var deleteResult = await _projectManager.DeleteProjectAsync(newProject4);

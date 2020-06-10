@@ -24,15 +24,32 @@ namespace XeppIT.ZoneElectrical.Project
             return new ProjectModel();
         }
 
-        public async Task CreateProjectAsync(ProjectModel project)
+        public async Task<int> GetNextJobNumberAsync()
         {
-            await _projectCollection.InsertOneAsync(project);
+            var sortOptions = Builders<ProjectModel>.Sort.Descending("JobNo");
+            var findOptions = Builders<ProjectModel>.Filter.Empty;
+            var projection = Builders<ProjectModel>.Projection.Include(x => x.JobNo);
+            var result = await _projectCollection.Find(findOptions).Project(projection).Sort(sortOptions).Limit(1).FirstOrDefaultAsync();
+
+            if (result == null)
+            {
+                return 1000;
+            }
+            return result[1].ToInt32()+1;
         }
 
-        public async Task CreateProjectAsync(ProjectModel project, int projectNumber)
+        public async Task<int> CreateProjectAsync(ProjectModel project)
+        {
+            project.JobNo = await GetNextJobNumberAsync();
+            await _projectCollection.InsertOneAsync(project);
+            return project.JobNo;
+        }
+
+        public async Task<int> CreateProjectAsync(ProjectModel project, int projectNumber)
         {
             project.JobNo = projectNumber;
             await _projectCollection.InsertOneAsync(project);
+            return projectNumber;
         }
 
         public async Task<ProjectModel> FindByProjectNumberAsync(int projectNumber)

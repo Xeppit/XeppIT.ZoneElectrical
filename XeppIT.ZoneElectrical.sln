@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XeppIT.ZoneElectrical", "XeppIT.ZoneElectrical\XeppIT.ZoneElectrical.csproj", "{E6BFFC03-995D-4805-BFB5-729201539226}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XeppIT.ZoneElectrical.UnitTests", "XeppIT.ZoneElectrical.UnitTests\XeppIT.ZoneElectrical.UnitTests.csproj", "{FC74D6F6-A9F2-4460-A940-B3772158B27C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XeppIT.ZoneElectrical.UnitTests", "XeppIT.ZoneElectrical.UnitTests\XeppIT.ZoneElectrical.UnitTests.csproj", "{FC74D6F6-A9F2-4460-A940-B3772158B27C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

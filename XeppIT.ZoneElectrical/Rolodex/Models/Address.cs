@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace XeppIT.ZoneElectrical.Project.Models
+namespace XeppIT.ZoneElectrical.Rolodex.Models
 {
-    public class ProjectAddress
+    public class Address
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }

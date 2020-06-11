@@ -1,0 +1,1796 @@
+[
+	{
+		"Name" : "Various Sites",
+		"Street" : "Not Specified",
+		"Town" : "Not Specified",
+		"Postcode" : "Not Specified"
+	},
+	{
+		"Name" : "Dŵr Cymru Welsh Water (Ty Awen)",
+		"Street" : "Spooner Close",
+		"Town" : "Marshfield",
+		"Postcode" : "NP10 8FZ"
+	},
+	{
+		"Name" : "Wigfa WPS",
+		"Street" : "Pontardawe",
+		"Town" : "Rhos",
+		"Postcode" : "SA8 3JJ"
+	},
+	{
+		"Name" : "Nash WwTW",
+		"Street" : "W Nash Rd",
+		"Town" : "Nash",
+		"Postcode" : "NP18 2BZ"
+	},
+	{
+		"Name" : "Bewdley Bank",
+		"Street" : "Portway",
+		"Town" : "Burghill",
+		"Postcode" : "HR4 8NF"
+	},
+	{
+		"Name" : "Llanfoist WwTW",
+		"Street" : "Merthyr Road",
+		"Town" : "Llanfoist",
+		"Postcode" : "NP7 9LL"
+	},
+	{
+		"Name" : "Newbridge SPS",
+		"Street" : "Newbridge Rd",
+		"Town" : "Cefn-mawr",
+		"Postcode" : "LL14 3JD"
+	},
+	{
+		"Name" : "Rachel's Organic",
+		"Street" : "Glan Yr Afon Industrial Estate",
+		"Town" : "Llanbadarn Fawr",
+		"Postcode" : "SY23 3JQ"
+	},
+	{
+		"Name" : "Pensarn SPS",
+		"Street" : "Pensarn Road",
+		"Town" : "Carmarthen ",
+		"Postcode" : "SA31 2BS"
+	},
+	{
+		"Name" : "Monmouth WwTW",
+		"Street" : "The Pump House",
+		"Town" : "Redbrook Rd",
+		"Postcode" : "NP25 4LG"
+	},
+	{
+		"Name" : "Pwll SPS",
+		"Street" : "Off A484 Sandy Rd",
+		"Town" : "Pwll",
+		"Postcode" : "SA15 4DS"
+	},
+	{
+		"Name" : "DCWW FAO Morgan Sindall",
+		"Street" : "Spooner Close",
+		"Town" : "Marshfield",
+		"Postcode" : "NP10 8FZ"
+	},
+	{
+		"Name" : "DCWW FAO Skanska",
+		"Street" : "Spooner Close",
+		"Town" : "Marshfield",
+		"Postcode" : "NP10 8FZ"
+	},
+	{
+		"Name" : "Cambrian SPS",
+		"Street" : "Cambrian Street",
+		"Town" : "Llanelli",
+		"Postcode" : "SA15 2LE"
+	},
+	{
+		"Name" : "Swansea Bay WwTW",
+		"Street" : "Kings Dock",
+		"Town" : "Port Tennant",
+		"Postcode" : "SA1 8QP"
+	},
+	{
+		"Name" : "GPS Links",
+		"Street" : "1-2 Leicester St.",
+		"Town" : "Bristol ",
+		"Postcode" : "BS3 4DE"
+	},
+	{
+		"Name" : "DCWW FAO J.N.Bentley",
+		"Street" : "Ty Awen",
+		"Town" : "Spooner Close, Coedkernew",
+		"Postcode" : "NP10 8FZ"
+	},
+	{
+		"Name" : "Edern SPS",
+		"Street" : "Hen Felin, Lon Goch",
+		"Town" : "Edern",
+		"Postcode" : "LL53 6JD"
+	},
+	{
+		"Name" : "Leominster WwTW",
+		"Street" : "Off A44",
+		"Town" : "Worcester Rd",
+		"Postcode" : "HR6 0QJ"
+	},
+	{
+		"Name" : "Clarbeston WwTW",
+		"Street" : "Clarbeston Road",
+		"Town" : "Haverfordwest ",
+		"Postcode" : "SA63 4UH"
+	},
+	{
+		"Name" : "Cleveland Cable Company",
+		"Street" : "Riverside Park Road",
+		"Town" : "Middlesbrough",
+		"Postcode" : "TS2 1QW"
+	},
+	{
+		"Name" : "Brynmawr WwTW",
+		"Street" : "Old Abergavenny Rd",
+		"Town" : "Ebbw Vale",
+		"Postcode" : "NP23 4GU"
+	},
+	{
+		"Name" : "Cardiff WwTW",
+		"Street" : "Tide Fields Road",
+		"Town" : "Roverway",
+		"Postcode" : "CF24 5SB"
+	},
+	{
+		"Name" : "Zone Electrical Ltd",
+		"Street" : "Waterloo House",
+		"Town" : "Penydarren",
+		"Postcode" : "CF47 0SX"
+	},
+	{
+		"Name" : "Cleveland Cable Company (Bristol)",
+		"Street" : "St Georges Ind Est",
+		"Town" : "St Andrews Rd",
+		"Postcode" : "BS11 9HS"
+	},
+	{
+		"Name" : "Skanska Utilities",
+		"Street" : "Ty Awen House",
+		"Town" : "Spooner Close",
+		"Postcode" : "NP10 8PZ"
+	},
+	{
+		"Name" : "GAP Group Ltd",
+		"Street" : "Carrick House",
+		"Town" : "40 Carrick Street",
+		"Postcode" : "G2 8DA"
+	},
+	{
+		"Name" : "The Sloop",
+		"Street" : "Off A466",
+		"Town" : "Llandogo",
+		"Postcode" : "CP25 4TA"
+	},
+	{
+		"Name" : "Edmundson Electrical Ltd",
+		"Street" : "Unit 10, Merthyr Ind. Park",
+		"Town" : "Pentrebach",
+		"Postcode" : "CF48 4DR"
+	},
+	{
+		"Name" : "Resolven WwTW",
+		"Street" : "Behind Resolven AFC",
+		"Town" : "Resolven",
+		"Postcode" : "SA11 4SP"
+	},
+	{
+		"Name" : "DCWW FAO MMB",
+		"Street" : "Spooner Close",
+		"Town" : "Marshfield",
+		"Postcode" : "NP10 8FZ"
+	},
+	{
+		"Name" : "Cerrigydrudion WwTW",
+		"Street" : "Next To Bikers Cafe Off A5",
+		"Town" : "Cerrigydrudion",
+		"Postcode" : "LL21 9SY"
+	},
+	{
+		"Name" : "Nomenca Ltd",
+		"Street" : "930 Millennium Business Park",
+		"Town" : "Birchwood Boulevard",
+		"Postcode" : "WA3 7QN"
+	},
+	{
+		"Name" : "Preseli SRV",
+		"Street" : "Off B4329",
+		"Town" : "Lower Bernards Well",
+		"Postcode" : "SA63 4UA"
+	},
+	{
+		"Name" : "R&M Electrical Group ",
+		"Street" : "Unit 4&5 Charnwood Court",
+		"Town" : "Viking Way",
+		"Postcode" : "SA1 7DA"
+	},
+	{
+		"Name" : "RS Components",
+		"Street" : "Unit D8.2 Forest Court",
+		"Town" : "Treforest Industrial Estate",
+		"Postcode" : "CF37 5UR"
+	},
+	{
+		"Name" : "Templegate Electrical",
+		"Street" : "Crawford Street",
+		"Town" : "Newport",
+		"Postcode" : "NP19 7AY"
+	},
+	{
+		"Name" : "Foxtam Controls",
+		"Street" : "Bridge Road",
+		"Town" : "Camberley",
+		"Postcode" : "GU15 2QR"
+	},
+	{
+		"Name" : "Pembroke Dock WwTW",
+		"Street" : "Fort Rd",
+		"Town" : "Pembroke Dock ",
+		"Postcode" : "SA72 6SX"
+	},
+	{
+		"Name" : "Whitland Engineering",
+		"Street" : "Unit B",
+		"Town" : "West Street",
+		"Postcode" : "SA34 0AE"
+	},
+	{
+		"Name" : "L H Evans",
+		"Street" : "Villiers House",
+		"Town" : "Neath Abbey Road",
+		"Postcode" : "SA10 7BR"
+	},
+	{
+		"Name" : "Collection",
+		"Street" : "Not Applicable",
+		"Town" : "Not Applicable",
+		"Postcode" : "Not Applicable"
+	},
+	{
+		"Name" : "Siemens PLC",
+		"Street" : "Digital Factory & Process Industries and Drives",
+		"Town" : "1 Kings Court",
+		"Postcode" : "WR5 1PT"
+	},
+	{
+		"Name" : "Mayhill WTW",
+		"Street" : "Wyeside Commercial Centre",
+		"Town" : "Hadnock Road",
+		"Postcode" : "NP25 3QG"
+	},
+	{
+		"Name" : "Merlin Systems Limited",
+		"Street" : "Unit 4, Blackwood Business Park",
+		"Town" : "Ash Road South",
+		"Postcode" : "LL13 9UG"
+	},
+	{
+		"Name" : "Fixwell Fasteners Limited",
+		"Street" : "Unit 23, Merthyr Industrial Park",
+		"Town" : "Pentrebach",
+		"Postcode" : "CF48 4DR"
+	},
+	{
+		"Name" : "Bolton Hill WTW",
+		"Street" : "Bolton Hill Water Treatment Works",
+		"Town" : "Tiers Cross",
+		"Postcode" : "SA62 3ER"
+	},
+	{
+		"Name" : "Arcadis Consulting (UK) Ltd ",
+		"Street" : "Arcadis Cymru House ",
+		"Town" : "St Mellons Business Park ",
+		"Postcode" : "CF3 0EY"
+	},
+	{
+		"Name" : "Kingfisher Court",
+		"Street" : "Coed Cae Road",
+		"Town" : "Kingfisher Court ",
+		"Postcode" : "SA151GT"
+	},
+	{
+		"Name" : "Rotherwas WwTW",
+		"Street" : "Fir Tree Lane",
+		"Town" : "Hereford",
+		"Postcode" : "HR2 6FG"
+	},
+	{
+		"Name" : "Titley WWTW",
+		"Street" : "Titley ",
+		"Town" : "Herefordshire",
+		"Postcode" : "HR53RP"
+	},
+	{
+		"Name" : "Northumberland SPS",
+		"Street" : "Northumberland Ave ",
+		"Town" : "Llanelli",
+		"Postcode" : "SA152HD"
+	},
+	{
+		"Name" : "Sloop PS",
+		"Street" : "Llandogo ",
+		"Town" : "Lane behind B&B",
+		"Postcode" : "NP254TW"
+	},
+	{
+		"Name" : "Pulsar Process Measurement Limited",
+		"Street" : "Cardinal Building",
+		"Town" : "Enigma Commercial Centre",
+		"Postcode" : "WR14 1JJ"
+	},
+	{
+		"Name" : "Cynon WWtw",
+		"Street" : "Abercynon Road ",
+		"Town" : "Glyncoch",
+		"Postcode" : "CF373ND"
+	},
+	{
+		"Name" : "Direct Channel",
+		"Street" : "Units 34 & 35 Bridge Road",
+		"Town" : "Great Bridge Industrial Estate",
+		"Postcode" : "DY4 0HR"
+	},
+	{
+		"Name" : "Halfway SPS",
+		"Street" : "Glyncoed Terrace",
+		"Town" : "Llanelli ",
+		"Postcode" : "SA15 1EZ"
+	},
+	{
+		"Name" : "Hirwaun WwTW",
+		"Street" : "Off Fifth Avenue",
+		"Town" : "Hirwaun",
+		"Postcode" : "CF44 9YN"
+	},
+	{
+		"Name" : "IFM Electronic",
+		"Street" : "Kingsway Buisness Park",
+		"Town" : "Hampton",
+		"Postcode" : "TW12 2HD"
+	},
+	{
+		"Name" : "Dwr Cymru Welsh Water ",
+		"Street" : "Crai Water Treatment Works ",
+		"Town" : "Blaentwyni Road",
+		"Postcode" : "SA9 1GS"
+	},
+	{
+		"Name" : "Gumfreston WwTW",
+		"Street" : "Off B4318",
+		"Town" : "Gumfreston",
+		"Postcode" : "SA70 8RA"
+	},
+	{
+		"Name" : "Lampeter Velfrey",
+		"Street" : "Norton Yard",
+		"Town" : "Lampeter Velfrey",
+		"Postcode" : "SA67 8UL"
+	},
+	{
+		"Name" : "Crownford",
+		"Street" : "Hirwaun Industrial Estate",
+		"Town" : "Hirwaun",
+		"Postcode" : "CF44 9UP"
+	},
+	{
+		"Name" : "Hawker Electronics",
+		"Street" : "57 The Avenue",
+		"Town" : "Rubery",
+		"Postcode" : "B45 9AL"
+	},
+	{
+		"Name" : "Llanelli WwTW",
+		"Street" : "Berwick Road",
+		"Town" : "Bynea",
+		"Postcode" : "SA14 9SQ"
+	},
+	{
+		"Name" : "Harding Avenue SPS",
+		"Street" : "Off Harding Avenue",
+		"Town" : "Rhuddlan",
+		"Postcode" : "LL18 5RP"
+	},
+	{
+		"Name" : "Belcom Cables",
+		"Street" : "Green Street",
+		"Town" : "Elsenham",
+		"Postcode" : "CM22 6DS"
+	},
+	{
+		"Name" : "Rhydlafar WwTW",
+		"Street" : "Crofft-Y-Genau Road",
+		"Town" : "St Fagans",
+		"Postcode" : "CF5 6HU"
+	},
+	{
+		"Name" : "Cwttir Lane SPS",
+		"Street" : "Cwttir Lane",
+		"Town" : "Daint Asaph",
+		"Postcode" : "LL17 0LQ"
+	},
+	{
+		"Name" : "Pentraeth WwTW",
+		"Street" : "1 Chapel Street",
+		"Town" : "Pentraeth",
+		"Postcode" : "LL75 8LQ"
+	},
+	{
+		"Name" : "Worcester Electrical Distributors",
+		"Street" : "Unit 15, Mill St Industrial Estate",
+		"Town" : "Abergavenny",
+		"Postcode" : "NP7 5HE"
+	},
+	{
+		"Name" : "APDS Limited",
+		"Street" : "302  Dean Road",
+		"Town" : "Avonmouth",
+		"Postcode" : "BS11 8AT"
+	},
+	{
+		"Name" : "Brickyard Lane SPS",
+		"Street" : "Adjacent To Tesco Carmarthen",
+		"Town" : "A40",
+		"Postcode" : "SA31 3AS"
+	},
+	{
+		"Name" : "Llanblethian PS",
+		"Street" : "Broadway",
+		"Town" : "Llanblethian",
+		"Postcode" : "CF71 7FA"
+	},
+	{
+		"Name" : "Cowbridge WwTW",
+		"Street" : "St Athan Road",
+		"Town" : "Cowbridge",
+		"Postcode" : "CF71 7HY"
+	},
+	{
+		"Name" : "CEF",
+		"Street" : "No 9 Merthyr Industrial Park",
+		"Town" : "Pentrebach",
+		"Postcode" : "CF48 4DR"
+	},
+	{
+		"Name" : "Partex Marking Systems",
+		"Street" : "61-64 Station Road",
+		"Town" : "Coleshill",
+		"Postcode" : "B46 1JT"
+	},
+	{
+		"Name" : "Cougar Automation",
+		"Street" : "Wellington Gate",
+		"Town" : "Silverthorne Way",
+		"Postcode" : "PO7 7XY"
+	},
+	{
+		"Name" : "Cherry Tree Walk SPS",
+		"Street" : "New Park",
+		"Town" : "Talbot Green",
+		"Postcode" : "CF72 8RJ"
+	},
+	{
+		"Name" : "Pensarn SPS",
+		"Street" : "Llanstaffan Rd",
+		"Town" : "Johnstown",
+		"Postcode" : "SA31 3NG"
+	},
+	{
+		"Name" : "Filo Form",
+		"Street" : "Unit K Lambs Farm Business Park",
+		"Town" : "Basingstoke Road , Swallowfield",
+		"Postcode" : "RG7 1PQ"
+	},
+	{
+		"Name" : "Clydach SPS",
+		"Street" : "School House ",
+		"Town" : "Gellionen Road, ",
+		"Postcode" : "SA6 5HE"
+	},
+	{
+		"Name" : "Montain Road SPS",
+		"Street" : "14 Quarry Road ",
+		"Town" : "Brynamman,",
+		"Postcode" : "SA18 1AB "
+	},
+	{
+		"Name" : "Newforrest SPS",
+		"Street" : "Bridgend Road, ",
+		"Town" : "Llanharan, ",
+		"Postcode" : "CF72 9 "
+	},
+	{
+		"Name" : "Scotch Pine SPS",
+		"Street" : "Mountain Road ",
+		"Town" : "Betws",
+		"Postcode" : "SA12 2PL"
+	},
+	{
+		"Name" : "Siginstone Res Generator",
+		"Street" : "Siginstaon ",
+		"Town" : "Llantwit ",
+		"Postcode" : "CF717LP"
+	},
+	{
+		"Name" : "LGT Tanks",
+		"Street" : "Celtic Way",
+		"Town" : "Marshfield",
+		"Postcode" : "NP10 8BE"
+	},
+	{
+		"Name" : "Morgan Marine",
+		"Street" : " Llandybie",
+		"Town" : "Ammanford, ",
+		"Postcode" : "SA18 3GY"
+	},
+	{
+		"Name" : "Newforrest SPS Transfer Switch",
+		"Street" : "Bridgend Road ",
+		"Town" : "Llanharan",
+		"Postcode" : "CF72 9"
+	},
+	{
+		"Name" : "ScrewFix",
+		"Street" : "Unit 31 ",
+		"Town" : "Pant Industrial Estate",
+		"Postcode" : "CF48 2SR"
+	},
+	{
+		"Name" : "Crowhill Intake WPS",
+		"Street" : "DCWW Crowhill Intake WPS",
+		"Town" : "Off B4330",
+		"Postcode" : "SA61 2GB"
+	},
+	{
+		"Name" : "Llwyn Passat SPS",
+		"Street" : "Plas St Andresse",
+		"Town" : "Penarth",
+		"Postcode" : "CF64 1BW"
+	},
+	{
+		"Name" : "Crai WTW",
+		"Street" : "Maes Y Cwm",
+		"Town" : "Crai",
+		"Postcode" : "LD3 8YN"
+	},
+	{
+		"Name" : "Hach Lange Ltd",
+		"Street" : "Laser House , Ground Floor, Suite B",
+		"Town" : "Waterfront Quay, Salford Quays",
+		"Postcode" : "M50 3XW"
+	},
+	{
+		"Name" : "Sluvad WTW",
+		"Street" : "llandegfedd Res ",
+		"Town" : "Pontypool",
+		"Postcode" : "NP4 0TA"
+	},
+	{
+		"Name" : "Denmans",
+		"Street" : "Unit A1",
+		"Town" : "Valleys Enterprise Centre, Merthyr Tydfil Industrial Estate",
+		"Postcode" : "CF48 2SR"
+	},
+	{
+		"Name" : "Power Quality Management Ltd",
+		"Street" : "2 Bournside Rd",
+		"Town" : "Cheltenham",
+		"Postcode" : "GL51 3AH"
+	},
+	{
+		"Name" : "DCWW Pontsticll WTW",
+		"Street" : "Pontsticll ",
+		"Town" : "Merthyr Tydfi ",
+		"Postcode" : "CF48 2UP"
+	},
+	{
+		"Name" : "Tinglebrook SPS",
+		"Street" : "Tinglebrook Close",
+		"Town" : "Madley",
+		"Postcode" : "HR2 9BZ"
+	},
+	{
+		"Name" : "Cefn Gorwydd SPS",
+		"Street" : "Ty Isaf",
+		"Town" : "Cefn-gorwydd",
+		"Postcode" : "LD4 4DN"
+	},
+	{
+		"Name" : "DEHN (UK) LTD",
+		"Street" : "Unit N8B Mltham Mills, Industrial Estate",
+		"Town" : "Meltham, Holmfirth",
+		"Postcode" : "HD9 4DS"
+	},
+	{
+		"Name" : "Newlands STW",
+		"Street" : "6 Laundry Ln",
+		"Town" : "Newland",
+		"Postcode" : "GL16 8NQ"
+	},
+	{
+		"Name" : "Bagllt SPS",
+		"Street" : "Bagllt Road ",
+		"Town" : "Holywell ",
+		"Postcode" : "CH6 6JB"
+	},
+	{
+		"Name" : "Glan-Y-Wern SPS",
+		"Street" : "Glan-Y-Wern Road",
+		"Town" : "Mochdre",
+		"Postcode" : "LL28 5BS"
+	},
+	{
+		"Name" : "GPS LTD",
+		"Street" : "Leicester Street",
+		"Town" : "Bedminster",
+		"Postcode" : "BS3 4DE"
+	},
+	{
+		"Name" : "Trelech STW",
+		"Street" : "Trelech",
+		"Town" : "Carmarthen",
+		"Postcode" : "SA33 6QU"
+	},
+	{
+		"Name" : "Aberbaiden WwTW",
+		"Street" : "Govilon",
+		"Town" : "Abergavenny",
+		"Postcode" : "NP7 9SE"
+	},
+	{
+		"Name" : "Efailnewydd WWTW",
+		"Street" : "Efailnewydd",
+		"Town" : "Pwllheli",
+		"Postcode" : "LL53 8TN"
+	},
+	{
+		"Name" : "Brynteg Park SPS",
+		"Street" : "Brynteg Ln",
+		"Town" : "Brynteg",
+		"Postcode" : "CF72 8LS"
+	},
+	{
+		"Name" : "Eign WwTW",
+		"Street" : "Outfall Works Rd",
+		"Town" : "Hereford",
+		"Postcode" : "HR1 1RY"
+	},
+	{
+		"Name" : "APG Neuros",
+		"Street" : "1st Floor West",
+		"Town" : "Davidson House",
+		"Postcode" : "RG1 3EU"
+	},
+	{
+		"Name" : "Betws Yn Rhos SPS",
+		"Street" : "Betws yn Rhos",
+		"Town" : "Abergele",
+		"Postcode" : "LL22 8AW"
+	},
+	{
+		"Name" : "Pantograph",
+		"Street" : "Unit 8d Felnex Close",
+		"Town" : "Cross Green Industrial Park",
+		"Postcode" : "LS9 0SR"
+	},
+	{
+		"Name" : "Gwyddelwern SPS",
+		"Street" : "Garreg Lwyd",
+		"Town" : "Gwyddelwern",
+		"Postcode" : "LL21 9EJ"
+	},
+	{
+		"Name" : "Pontybodkin Lower SPS",
+		"Street" : "Corwen Rd",
+		"Town" : "Pontybodkin",
+		"Postcode" : "CH7 4TG"
+	},
+	{
+		"Name" : "Mill Lane SPS",
+		"Street" : "Meadow Ln",
+		"Town" : "Willaston",
+		"Postcode" : "CH64 2TZ"
+	},
+	{
+		"Name" : "DCWW Cogmoors WwTW",
+		"Street" : "Cardiff Road,",
+		"Town" : "Dinas Powys",
+		"Postcode" : "CF64 4TR"
+	},
+	{
+		"Name" : "Northumberland SPS",
+		"Street" : "Northumberland AVE ",
+		"Town" : "Llanelli ",
+		"Postcode" : "SA152HA"
+	},
+	{
+		"Name" : "Celtic Cleaning",
+		"Street" : "Unit 2 Waterloo House",
+		"Town" : "Penydarren",
+		"Postcode" : "CF47 0SX"
+	},
+	{
+		"Name" : "St Mellons SPS",
+		"Street" : "St. Mellons",
+		"Town" : "Cardiff",
+		"Postcode" : "CF3 0NX"
+	},
+	{
+		"Name" : "Various  DCWW",
+		"Street" : "Flow scheme ",
+		"Town" : "Hereford ",
+		"Postcode" : "CF47 0SX"
+	},
+	{
+		"Name" : "Hilti",
+		"Street" : "1 Trafford Wharf Road ",
+		"Town" : "Trafford Park",
+		"Postcode" : "M17 1BY"
+	},
+	{
+		"Name" : "Touch Networks",
+		"Street" : "Unit 1 ",
+		"Town" : "Cyfarthfa Industrial Estate",
+		"Postcode" : "CF47 8PE"
+	},
+	{
+		"Name" : "Omega",
+		"Street" : "Unit 10 Second Way ",
+		"Town" : "Avonmouth",
+		"Postcode" : "BS11 8DF"
+	},
+	{
+		"Name" : "Pump Supplies",
+		"Street" : "Llewellyns Quay",
+		"Town" : "The Docks",
+		"Postcode" : "SA13 1RF"
+	},
+	{
+		"Name" : "Fourteenth Avenue SPS",
+		"Street" : "Hirwaurn Industrial Estate",
+		"Town" : "Hirwaun",
+		"Postcode" : "CF44 9UP"
+	},
+	{
+		"Name" : "AFI-Uplift Limited",
+		"Street" : "Diamond House",
+		"Town" : "Diamond Business Park",
+		"Postcode" : "WF2 8PT"
+	},
+	{
+		"Name" : "Speedy Hire",
+		"Street" : "Chase House",
+		"Town" : "16 The Parks",
+		"Postcode" : "WA12 0JQ"
+	},
+	{
+		"Name" : "Narberth WwTW",
+		"Street" : "Valley Road",
+		"Town" : "Narberth",
+		"Postcode" : "SA67 8QY"
+	},
+	{
+		"Name" : "Lydstep SPS",
+		"Street" : "The Green",
+		"Town" : "Lydstep",
+		"Postcode" : "SA70 7SG"
+	},
+	{
+		"Name" : "Llanboidy STW",
+		"Street" : "Llanboidy",
+		"Town" : "Whitland",
+		"Postcode" : "SA34 0EG"
+	},
+	{
+		"Name" : "MMB Cabins ",
+		"Street" : "Pant yr Reservoir ",
+		"Town" : "Cwmbran ",
+		"Postcode" : "NP44 7AS"
+	},
+	{
+		"Name" : "Cardiff Western District PS",
+		"Street" : "Penarth Rd",
+		"Town" : "Cardiff",
+		"Postcode" : "CF11 8TT"
+	},
+	{
+		"Name" : "Units 2,  beacon foods",
+		"Street" : " Brecon Enterprise Park, Brecon LD3 8BT",
+		"Town" : "Brecon LD3 8BT",
+		"Postcode" : "LD38BT"
+	},
+	{
+		"Name" : "Abergynolwn STW",
+		"Street" : "Llanegryn St",
+		"Town" : "Abergynolwyn",
+		"Postcode" : "LL36 9YE"
+	},
+	{
+		"Name" : "Blaenau Ffestiniog SWK",
+		"Street" : "Blaenau Ffestiniog",
+		"Town" : "UK",
+		"Postcode" : "LL41 4BW"
+	},
+	{
+		"Name" : "Bron Aber SWK",
+		"Street" : "A470",
+		"Town" : "Blaenau Ffestiniog ",
+		"Postcode" : "LL41 4UR"
+	},
+	{
+		"Name" : "Commins Coch SPS",
+		"Street" : "A470",
+		"Town" : "Machynlleth",
+		"Postcode" : "SY20 8LH"
+	},
+	{
+		"Name" : "Dolgellau STW ",
+		"Street" : "A493",
+		"Town" : "Dolgellau",
+		"Postcode" : "LL40 1YA"
+	},
+	{
+		"Name" : "Clawddnewydd STW",
+		"Street" : "Trem Y Coed",
+		"Town" : "Clawddnewydd",
+		"Postcode" : "LL15 2NQ"
+	},
+	{
+		"Name" : "Crofty SPS ",
+		"Street" : "Chapel Road",
+		"Town" : "Crofty ",
+		"Postcode" : "SA4 3SJ"
+	},
+	{
+		"Name" : "Bettws-Y-Coed Golf Club SPS",
+		"Street" : "Old Church Rd",
+		"Town" : "Betws-y-Coed ",
+		"Postcode" : "LL24 0AL"
+	},
+	{
+		"Name" : "Gwalchmai Isaf PS",
+		"Street" : "Bryntirion",
+		"Town" : "Holyhead",
+		"Postcode" : "LL65 4SS"
+	},
+	{
+		"Name" : "Bryncir STW",
+		"Street" : "A487",
+		"Town" : "Garndolbenmaen ",
+		"Postcode" : "LL51 9LX"
+	},
+	{
+		"Name" : "Cwm Bowydd CSO",
+		"Street" : "Ffordd Cwmbowydd Rd",
+		"Town" : "Blaenau Ffestiniog ",
+		"Postcode" : "LL41 3EL"
+	},
+	{
+		"Name" : "Whitland WwTW",
+		"Street" : "Unspecified",
+		"Town" : "Unspecified",
+		"Postcode" : "Unspecified"
+	},
+	{
+		"Name" : "Penybont",
+		"Street" : "Ogmore by Sea ",
+		"Town" : "Bridgend ",
+		"Postcode" : "CF32 0QP"
+	},
+	{
+		"Name" : "MMB",
+		"Street" : "LLANBERIS WWTW ",
+		"Town" : "LLANBERIS ",
+		"Postcode" : "LL554TD"
+	},
+	{
+		"Name" : "Talybont WTW ",
+		"Street" : "Talybont ",
+		"Town" : "Brecon Beacons ",
+		"Postcode" : "LD37YS"
+	},
+	{
+		"Name" : "Pontyberem WwTW",
+		"Street" : "Not Specified",
+		"Town" : "Not Specified",
+		"Postcode" : "Not Specified"
+	},
+	{
+		"Name" : "Eland Cables",
+		"Street" : "120 Highgate Studios",
+		"Town" : "53-79 Highgate Road",
+		"Postcode" : "NW5 1TL"
+	},
+	{
+		"Name" : "Blakley Electrics",
+		"Street" : "1 Thomas Road",
+		"Town" : "Optima Park",
+		"Postcode" : "DA1 4QX"
+	},
+	{
+		"Name" : "Treborth WwTW",
+		"Street" : "Parc Menai",
+		"Town" : "Bangor",
+		"Postcode" : "LL57 4DF"
+	},
+	{
+		"Name" : "Rotech Systems",
+		"Street" : "Unit 57 Canal Bridge Centre",
+		"Town" : "Ellesmere Port",
+		"Postcode" : "CH65 4EH"
+	},
+	{
+		"Name" : "Merlin’s Bridge WwTW",
+		"Street" : "Dwr Cymru Welsh Water",
+		"Town" : "Haverfordwest",
+		"Postcode" : "SA61 1JL"
+	},
+	{
+		"Name" : "Procentec",
+		"Street" : "Digital World Centre",
+		"Town" : "1 Lowry Plaza, Suite 620",
+		"Postcode" : "M50 3UB"
+	},
+	{
+		"Name" : "Central Cables",
+		"Street" : "Unit 8 Brindleys Business Park",
+		"Town" : "Chaseside Drive",
+		"Postcode" : "WS11 7GD"
+	},
+	{
+		"Name" : "Control2K",
+		"Street" : "Waterton Centre",
+		"Town" : "Waterton Industrial Estate",
+		"Postcode" : "CF31 3WT"
+	},
+	{
+		"Name" : "Waycock Cross  WWTW",
+		"Street" : "Waycock Road ",
+		"Town" : "Fivr Mile Lane ",
+		"Postcode" : "CF62 3AA"
+	},
+	{
+		"Name" : "Mermaid Quay ",
+		"Street" : "Bute Street ",
+		"Town" : "Cardiff Bay ",
+		"Postcode" : "CF11 5AB"
+	},
+	{
+		"Name" : "Llangennech SPS",
+		"Street" : "off Station Road",
+		"Town" : "Llangennech",
+		"Postcode" : "SA14 8UY"
+	},
+	{
+		"Name" : "Gowerton WWTW ",
+		"Street" : "Victoria Road",
+		"Town" : "Gowerton ",
+		"Postcode" : "SA4 3AA"
+	},
+	{
+		"Name" : "Pembroke PS",
+		"Street" : "By Penbroke Castle",
+		"Town" : "Pembroke",
+		"Postcode" : "SA71 4LA"
+	},
+	{
+		"Name" : "Ponthir WWTW",
+		"Street" : "Ponthir",
+		"Town" : "Heol Briefat ",
+		"Postcode" : "NP181PG"
+	},
+	{
+		"Name" : "Langdon WwTW",
+		"Street" : "Off A477",
+		"Town" : "Broadmoor",
+		"Postcode" : "SA68 0XN"
+	},
+	{
+		"Name" : "Wyebridge SPS",
+		"Street" : "Old Dixton Rd",
+		"Town" : "Monmouth",
+		"Postcode" : "NP25 3LS"
+	},
+	{
+		"Name" : "A548 ",
+		"Street" : "Coast Road ",
+		"Town" : "Rhyl",
+		"Postcode" : "LL183TB"
+	},
+	{
+		"Name" : "Westshore Scheme ",
+		"Street" : "West Shore  SPS ",
+		"Town" : "Abby Road ",
+		"Postcode" : "LL302AG"
+	},
+	{
+		"Name" : "Llangernyw PS",
+		"Street" : "Llais Afon",
+		"Town" : "Llangernyw",
+		"Postcode" : "LL22 8PP"
+	},
+	{
+		"Name" : "Chirk SPS",
+		"Street" : "West View",
+		"Town" : "Chirk",
+		"Postcode" : "LL14 5HW"
+	},
+	{
+		"Name" : "Brentwood STW",
+		"Street" : "Nags Head Lane",
+		"Town" : "Upminster",
+		"Postcode" : "CM14 5NL"
+	},
+	{
+		"Name" : "Eastern District PS ",
+		"Street" : "Off Rover Way ",
+		"Town" : "Cardiff ",
+		"Postcode" : "CF24 2RX"
+	},
+	{
+		"Name" : "Resolven WwTW",
+		"Street" : "Neath Vales Business Park",
+		"Town" : "Resolven",
+		"Postcode" : "SA11 4SR"
+	},
+	{
+		"Name" : "Mardy WTW ",
+		"Street" : "Meardy ",
+		"Town" : "Ferndale ",
+		"Postcode" : "CF43 4BW"
+	},
+	{
+		"Name" : "Eastern Distict CITS",
+		"Street" : "Rover way ",
+		"Town" : "Cardiff ",
+		"Postcode" : "TBC"
+	},
+	{
+		"Name" : "Bryn Cowlyd WTW",
+		"Street" : "Trefriw ",
+		"Town" : "Conway ",
+		"Postcode" : "LL328JG"
+	},
+	{
+		"Name" : "Llanllyfni STW ",
+		"Street" : "Llanllyfni",
+		"Town" : "Caernarfon",
+		"Postcode" : "LL54 6ST"
+	},
+	{
+		"Name" : "Llannor STW",
+		"Street" : "Llannor",
+		"Town" : "Pwllheli",
+		"Postcode" : "LL53 6DL "
+	},
+	{
+		"Name" : "Llanystumdwy STW ",
+		"Street" : "Llanystumdwy",
+		"Town" : "Criccieth",
+		"Postcode" : "LL52 0SY "
+	},
+	{
+		"Name" : "Mynytho STW",
+		"Street" : "Mynytho",
+		"Town" : "Pwllheli",
+		"Postcode" : "LL53 7SA "
+	},
+	{
+		"Name" : "Hook SPS",
+		"Street" : "Pill Road",
+		"Town" : "Hook ",
+		"Postcode" : "SA624LU"
+	},
+	{
+		"Name" : "DCWW Fishguard WwTW",
+		"Street" : "Fishguard Harbour",
+		"Town" : "Goodwick",
+		"Postcode" : "SA64 0BU"
+	},
+	{
+		"Name" : "Llan Penmachno WwTW",
+		"Street" : "Penmachno",
+		"Town" : "Betws-y-Coed",
+		"Postcode" : "LL24 0PS"
+	},
+	{
+		"Name" : "Llanrug STW ",
+		"Street" : "Llanrug",
+		"Town" : "Caernarfon",
+		"Postcode" : "LL554BS"
+	},
+	{
+		"Name" : "Penisarwaun SWK",
+		"Street" : "Cwm-y-glo",
+		"Town" : "Caernarfon",
+		"Postcode" : "LL55 3PH"
+	},
+	{
+		"Name" : "FelinFach SPS",
+		"Street" : "Heol Llyswen ",
+		"Town" : "Lampeter Road ",
+		"Postcode" : "SA487HL"
+	},
+	{
+		"Name" : "Lampeter WwTW",
+		"Street" : "Barley Mow",
+		"Town" : "Lampeter",
+		"Postcode" : "SA48 7BY"
+	},
+	{
+		"Name" : "Llangaffo STW ",
+		"Street" : "B4419",
+		"Town" : "Llangaffo",
+		"Postcode" : "LL60 6NF "
+	},
+	{
+		"Name" : "Llansadwrn SPS ",
+		"Street" : "Llandegfan",
+		"Town" : "Isle of Anglesey",
+		"Postcode" : "LL59 5SH"
+	},
+	{
+		"Name" : "Caernarfon Nantlle SPS",
+		"Street" : "B4418",
+		"Town" : "Nantlle",
+		"Postcode" : "LL54 6BU "
+	},
+	{
+		"Name" : "Trefriw Coed Gwydyr SPS ",
+		"Street" : "Chandlers Brasserie",
+		"Town" : "Tan y Fedw",
+		"Postcode" : "LL27 0JR "
+	},
+	{
+		"Name" : "Aberystwyth STW",
+		"Street" : "Glanyrafon Ind Est ",
+		"Town" : "Llanbadarn",
+		"Postcode" : "SY23 3JQ"
+	},
+	{
+		"Name" : "Clynnog Fawr SPS",
+		"Street" : "Clynnog Fawr",
+		"Town" : "Gwynedd",
+		"Postcode" : "LL54 5PE"
+	},
+	{
+		"Name" : "Machynlleth WwTW Outfall Pump Station Overflow",
+		"Street" : "Gasworks Lane",
+		"Town" : "Machynlleth",
+		"Postcode" : "SY20 8BU"
+	},
+	{
+		"Name" : "Penegoes SPS CSO",
+		"Street" : "Melinbyrhedin",
+		"Town" : "Powys",
+		"Postcode" : "SY20 8UN"
+	},
+	{
+		"Name" : "Sludge Tek Ltd",
+		"Street" : "51 Royce Close ",
+		"Town" : "West Portway Industrial Estate, Andover",
+		"Postcode" : "SP10 3TS"
+	},
+	{
+		"Name" : "Cog Moors",
+		"Street" : "Green Lane",
+		"Town" : "Dinas Powys",
+		"Postcode" : "TBC"
+	},
+	{
+		"Name" : "PB Gelatines",
+		"Street" : "PB Gelatines",
+		"Town" : "Gwaelod-Y-Garth Rd",
+		"Postcode" : "CF37 5TN"
+	},
+	{
+		"Name" : "Aberytwyth WWTW",
+		"Street" : "Glan y Afon Industrial Est ",
+		"Town" : "Llanbadarn Fawr",
+		"Postcode" : "SY233JQ"
+	},
+	{
+		"Name" : "East Bolviston WwTW",
+		"Street" : "Brook Lane",
+		"Town" : "St Nicholas",
+		"Postcode" : "CF5 6TB"
+	},
+	{
+		"Name" : "Mermaid Quay",
+		"Street" : "Unknown",
+		"Town" : "Unknown",
+		"Postcode" : "Unknown"
+	},
+	{
+		"Name" : "Idole ",
+		"Street" : "Kidwelly ",
+		"Town" : "Swansea ",
+		"Postcode" : "SA328DB"
+	},
+	{
+		"Name" : "Changeover switch Pontyates.",
+		"Street" : "Pontyates ",
+		"Town" : "Kidwelly ",
+		"Postcode" : "SA155TR"
+	},
+	{
+		"Name" : "Cilfynydd WwTW",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "CF37 4HL"
+	},
+	{
+		"Name" : "Tywyn Idris Villas SPS",
+		"Street" : "High Street",
+		"Town" : "Tywyn",
+		"Postcode" : "LL36 9AE"
+	},
+	{
+		"Name" : "DCWW Afan AD",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "TBC"
+	},
+	{
+		"Name" : "Osbaston",
+		"Street" : "Forge Road ",
+		"Town" : "Osbaston",
+		"Postcode" : "NP25 3AX"
+	},
+	{
+		"Name" : "Maerdy WTW",
+		"Street" : "Maerdy Rd",
+		"Town" : "Ferndale",
+		"Postcode" : "CF43 4BS"
+	},
+	{
+		"Name" : "Ynys Bridge CSO",
+		"Street" : "Tomgwynlais ",
+		"Town" : "Pontypridd",
+		"Postcode" : "CF15 7HW"
+	},
+	{
+		"Name" : "Mawdlan Kiosk Install",
+		"Street" : "Fairways",
+		"Town" : "North Cornelly",
+		"Postcode" : "CF33 4DH"
+	},
+	{
+		"Name" : " Trogen UV",
+		"Street" : "19 JESSOPS RIVERSIDE, ",
+		"Town" : "800 BRIGHTSIDE LANE,",
+		"Postcode" : "S9 2RX"
+	},
+	{
+		"Name" : "Cardigan Lower Town CSO",
+		"Street" : "St Marys Street ",
+		"Town" : "Cardigan ",
+		"Postcode" : "SA43 1ET"
+	},
+	{
+		"Name" : "Treorchy SPS",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "CF426PW"
+	},
+	{
+		"Name" : "Ruardean WwTW",
+		"Street" : "Ruardean wwtw Cash Hill",
+		"Town" : "Ruardean",
+		"Postcode" : "GL17 9TG"
+	},
+	{
+		"Name" : "Peterchurch WwTW",
+		"Street" : "B4348",
+		"Town" : "Peterchurch",
+		"Postcode" : "West Midlands"
+	},
+	{
+		"Name" : "Drefach WwTW ",
+		"Street" : "A484",
+		"Town" : "Dol Bran",
+		"Postcode" : "SA44 5TG"
+	},
+	{
+		"Name" : "Bishopston SPS ",
+		"Street" : "Gower Hotel",
+		"Town" : "Church Lane",
+		"Postcode" : "SA3 3JT "
+	},
+	{
+		"Name" : "Manordeilo SPS ",
+		"Street" : "A40",
+		"Town" : "Manordeilo",
+		"Postcode" : "SA19 7BH"
+	},
+	{
+		"Name" : "Melin - Y - Coed",
+		"Street" : "New Town",
+		"Town" : "Cardigan",
+		"Postcode" : "SA43 1PQ"
+	},
+	{
+		"Name" : "Chester Green lane SPS ",
+		"Street" : "Boundary Lane",
+		"Town" : "Green Lane",
+		"Postcode" : "SA43 1PQ"
+	},
+	{
+		"Name" : "Mydroilyn STW",
+		"Street" : "B4342",
+		"Town" : "Mydroilyn",
+		"Postcode" : "SA48 7QY"
+	},
+	{
+		"Name" : "Pontneddfechan WwTW",
+		"Street" : "Mellte Ave",
+		"Town" : "Glynneath",
+		"Postcode" : "SA11 5NX"
+	},
+	{
+		"Name" : "Parc Y Splott WwTW",
+		"Street" : "B4312",
+		"Town" : "Johnston",
+		"Postcode" : "SA31 3QU"
+	},
+	{
+		"Name" : "Clunderwen Iron Duke SPS",
+		"Street" : "A478",
+		"Town" : "Clunderwen",
+		"Postcode" : "SA66 7NF"
+	},
+	{
+		"Name" : "Little Mill SPS",
+		"Street" : "Monkswood",
+		"Town" : "USK",
+		"Postcode" : "NP15 1QB"
+	},
+	{
+		"Name" : "Cwmgwili STW",
+		"Street" : "Check Map Link",
+		"Town" : "Penygroes",
+		"Postcode" : "SA18 3RN"
+	},
+	{
+		"Name" : "Wessex Water /Geneco ",
+		"Street" : "Kings Weston Lane ",
+		"Town" : "Avonmouth ",
+		"Postcode" : "BS11 0YS"
+	},
+	{
+		"Name" : "DCWW ",
+		"Street" : "Nant Talwg ",
+		"Town" : "Millwood Bowling Club ",
+		"Postcode" : "CF62 7LX"
+	},
+	{
+		"Name" : "DCWW",
+		"Street" : "Cleveland Ave",
+		"Town" : "Sully ",
+		"Postcode" : "CF645SP"
+	},
+	{
+		"Name" : "Pentrafelin STW",
+		"Street" : "NA",
+		"Town" : "NA",
+		"Postcode" : "LL52 0PY"
+	},
+	{
+		"Name" : "Trostre No. 2 SPS",
+		"Street" : "NA",
+		"Town" : "NA",
+		"Postcode" : "SA14 9RA"
+	},
+	{
+		"Name" : "Yarpole SPS",
+		"Street" : "NA",
+		"Town" : "NA",
+		"Postcode" : "HR6 0BA"
+	},
+	{
+		"Name" : "Penygroes SPS",
+		"Street" : "NA",
+		"Town" : "NA",
+		"Postcode" : "SA18 3AJ"
+	},
+	{
+		"Name" : "Kimberly Road CSO",
+		"Street" : "Kimberley Road",
+		"Town" : "Newport Road Industrial Estate",
+		"Postcode" : "NA"
+	},
+	{
+		"Name" : "Lavister WTW",
+		"Street" : "NA",
+		"Town" : "NA",
+		"Postcode" : "LL12 0BF"
+	},
+	{
+		"Name" : "Queensferry WwTW",
+		"Street" : "NA",
+		"Town" : "NA",
+		"Postcode" : "CH5 2QJ"
+	},
+	{
+		"Name" : "St Clears Car Park SPS ",
+		"Street" : "NA",
+		"Town" : "NA",
+		"Postcode" : "SA33 4AA"
+	},
+	{
+		"Name" : "Rhydymwyn STW",
+		"Street" : "NA",
+		"Town" : "NA",
+		"Postcode" : "CH7 5JH"
+	},
+	{
+		"Name" : "Tongwynlais CSO",
+		"Street" : "Next to playing fields",
+		"Town" : "Off Iron Bridge Road",
+		"Postcode" : "CF15 7HW"
+	},
+	{
+		"Name" : "Manorbier Beach Car Park",
+		"Street" : "Manorbier ",
+		"Town" : "Pembrokeshire ",
+		"Postcode" : "SA70 7SY"
+	},
+	{
+		"Name" : "West Lane  Close ",
+		"Street" : "Keeston ",
+		"Town" : "Haverfordwest ",
+		"Postcode" : "SA626EW"
+	},
+	{
+		"Name" : "Longtown SPS",
+		"Street" : "Longtown",
+		"Town" : "Clodock",
+		"Postcode" : "HR2 0NY"
+	},
+	{
+		"Name" : "Lyonshall WwTW",
+		"Street" : "Lyonshall",
+		"Town" : "Holme Marsh",
+		"Postcode" : "HR5 3LU"
+	},
+	{
+		"Name" : "Llanfihangel-ar-arth WWTW",
+		"Street" : "Llanfihangel-ar-Arth Sewage Works",
+		"Town" : "B4459",
+		"Postcode" : "SA39 9JA"
+	},
+	{
+		"Name" : "Valley Road SPS",
+		"Street" : "Valley Road",
+		"Town" : "Saundersfoot",
+		"Postcode" : "SA69 9BX"
+	},
+	{
+		"Name" : "Builth Wells WTW",
+		"Street" : "Llanelwedd",
+		"Town" : "Builth Wells ",
+		"Postcode" : "LD2 3SY"
+	},
+	{
+		"Name" : "Waterloo SPS ",
+		"Street" : "London Road ",
+		"Town" : "Pembroke Dock ",
+		"Postcode" : "SA726TX"
+	},
+	{
+		"Name" : "Llwynypia Sherwood SPS",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "CF40 2TD"
+	},
+	{
+		"Name" : "Lysaght Village SPS",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "NP19 0XB"
+	},
+	{
+		"Name" : "Treforest Bridge Road",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "TBC"
+	},
+	{
+		"Name" : "Trealaw",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "CF40 2NR"
+	},
+	{
+		"Name" : "Murlande Way",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "CF62 3HL"
+	},
+	{
+		"Name" : "Westfield Gardens SPS Malpas",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "NP20 6PW"
+	},
+	{
+		"Name" : "Cwmlladron",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "SA4 4HF"
+	},
+	{
+		"Name" : "Cefn Draw",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "SA4 3PH"
+	},
+	{
+		"Name" : "Abbey SPS",
+		"Street" : "TBC",
+		"Town" : "TBC",
+		"Postcode" : "SA13 2NG"
+	},
+	{
+		"Name" : "Cantref WTW",
+		"Street" : "Cwmtaff ",
+		"Town" : "Merthyr Tydfil ",
+		"Postcode" : "CF48 2HY"
+	},
+	{
+		"Name" : "Renewables First ",
+		"Street" : "The Mill",
+		"Town" : "Brimscombe Hill",
+		"Postcode" : "GL52QG"
+	},
+	{
+		"Name" : "Coopers Well CSO",
+		"Street" : "Pantyffynnon",
+		"Town" : "Carmarthenshire",
+		"Postcode" : "SA18 2RE"
+	},
+	{
+		"Name" : "Fred Rees CSO",
+		"Street" : "Perrots Road",
+		"Town" : "Haverfordwest",
+		"Postcode" : "SA61 2HD"
+	},
+	{
+		"Name" : "Quarry Place CSO",
+		"Street" : "Quarry Place",
+		"Town" : "Gwaun-cae-gurwen",
+		"Postcode" : "SA18 1EY"
+	},
+	{
+		"Name" : "Tanerdy CSO",
+		"Street" : "Carmarthen Community",
+		"Town" : "Abergwili",
+		"Postcode" : "SA31 1NL"
+	},
+	{
+		"Name" : "Gwerny Fawr  Res",
+		"Street" : "Gwerny Fawr ",
+		"Town" : "Abergravenny ",
+		"Postcode" : "NP7 7LY"
+	},
+	{
+		"Name" : "Caldicot SPS",
+		"Street" : "Off Kestral Close ",
+		"Town" : "Caldicot ",
+		"Postcode" : "NP26 5RA"
+	},
+	{
+		"Name" : "Hunger Pill ",
+		"Street" : "Caerwent Lane ",
+		"Town" : "Chepstow ",
+		"Postcode" : "NP16 6UN"
+	},
+	{
+		"Name" : "Angelton Green SPS",
+		"Street" : "Pen y Cae",
+		"Town" : "Pen-y-fai",
+		"Postcode" : "CF31 4LQ"
+	},
+	{
+		"Name" : "Village Farm SPS",
+		"Street" : "Heol Mostyn",
+		"Town" : "Village Farm Industrial Estate",
+		"Postcode" : "CF33 6BJ"
+	},
+	{
+		"Name" : "Dobshill SPS",
+		"Street" : "Drury Lane",
+		"Town" : "Dobs Hill",
+		"Postcode" : "CH5 3NG"
+	},
+	{
+		"Name" : "Llanuwchllyn WwTW",
+		"Street" : "Frongain",
+		"Town" : "Lon",
+		"Postcode" : "LL23 7TW"
+	},
+	{
+		"Name" : "Norton WwTW",
+		"Street" : "Presteigne",
+		"Town" : "Herefordshire",
+		"Postcode" : "LD8 2EU"
+	},
+	{
+		"Name" : "Tresaith Beach SPS",
+		"Street" : "Tan-y-groes",
+		"Town" : "Tresaith",
+		"Postcode" : "SA4 32JL"
+	},
+	{
+		"Name" : "Conners Quay STW",
+		"Street" : "St Davids Court",
+		"Town" : "Golftyn",
+		"Postcode" : "CH5 4EW"
+	},
+	{
+		"Name" : "Shobdon New SWK",
+		"Street" : "Shobdon Village",
+		"Town" : "Shobdon",
+		"Postcode" : "HR6 9NN"
+	},
+	{
+		"Name" : "Beaumaris WwTW",
+		"Street" : "Sling",
+		"Town" : "Llanfaes",
+		"Postcode" : "LL58 8LD"
+	},
+	{
+		"Name" : "Abererch STW",
+		"Street" : "Abererch",
+		"Town" : "Gwynedd",
+		"Postcode" : "LL53 6YT"
+	},
+	{
+		"Name" : "Shaftesbury Park CSO",
+		"Street" : "Shaftesbury Walk ",
+		"Town" : "Newport ",
+		"Postcode" : "NP20 5HN"
+	},
+	{
+		"Name" : "Bewdley Bank SR",
+		"Street" : "Portway",
+		"Town" : "Burghil",
+		"Postcode" : "HR47SE"
+	},
+	{
+		"Name" : "Castell Ros Reservoir ",
+		"Street" : "Station Road ",
+		"Town" : "Maerdy ",
+		"Postcode" : "CF43 4BS"
+	},
+	{
+		"Name" : "Ynys Y Fro ",
+		"Street" : "Cwm Lane ",
+		"Town" : "Rogerstone ",
+		"Postcode" : "NP10 9GN"
+	},
+	{
+		"Name" : "Shobdon  EDM",
+		"Street" : "Hereford",
+		"Town" : "West Midlands ",
+		"Postcode" : "HR6 9NN"
+	},
+	{
+		"Name" : "Ferryside STW EDM",
+		"Street" : "Camarthenshire ",
+		"Town" : "West Wales",
+		"Postcode" : "SA17 5TN"
+	},
+	{
+		"Name" : "Upper Cynmmer",
+		"Street" : "Cymmer ",
+		"Town" : "Port Talbot ",
+		"Postcode" : "SA13 3HY"
+	},
+	{
+		"Name" : "Jackspill SPS",
+		"Street" : "Newport ",
+		"Town" : "Newport ",
+		"Postcode" : "NP"
+	},
+	{
+		"Name" : "Flood Scheme CSO ",
+		"Street" : "Lleweyn Road",
+		"Town" : "Cwmbran ",
+		"Postcode" : "NP443PW"
+	},
+	{
+		"Name" : "Llandegla",
+		"Street" : "Dyke Path",
+		"Town" : "Wrexham",
+		"Postcode" : "LL11 3AT"
+	},
+	{
+		"Name" : "Birchgrove WPS",
+		"Street" : "Birchgrove",
+		"Town" : "Glais",
+		"Postcode" : "SA7 9EJ"
+	},
+	{
+		"Name" : "Star Gaerwen SPS",
+		"Street" : "A5",
+		"Town" : "Star",
+		"Postcode" : "LL60 6AL"
+	},
+	{
+		"Name" : "Coldbath CSO",
+		"Street" : "Coldbath Lane ",
+		"Town" : "Caerleon ",
+		"Postcode" : "NP"
+	},
+	{
+		"Name" : "DCWW",
+		"Street" : "Nant y Bwlch WTW",
+		"Town" : "Water works Lane ",
+		"Postcode" : "NP22 4EP"
+	},
+	{
+		"Name" : "Barmouth Beach SPS",
+		"Street" : "Barmouth ",
+		"Town" : "Barmouth ",
+		"Postcode" : "LL421NF"
+	},
+	{
+		"Name" : "GLYN CEIRIOG STW",
+		"Street" : "B4500",
+		"Town" : "Dolywern",
+		"Postcode" : "LL20 7AB"
+	},
+	{
+		"Name" : "Trefnant WwTW",
+		"Street" : "Pont Llannerch",
+		"Town" : "St Asaph",
+		"Postcode" : "LL17 0BA"
+	},
+	{
+		"Name" : "Brecon WwTW",
+		"Street" : "Dorlangoch",
+		"Town" : "Brecon",
+		"Postcode" : "LD3 7RH"
+	},
+	{
+		"Name" : "Nortan SPS",
+		"Street" : "Will's View",
+		"Town" : "Norton",
+		"Postcode" : "LD8 2RS"
+	},
+	{
+		"Name" : "Presteigne WwTW",
+		"Street" : "Llanandras Park",
+		"Town" : "Clatterbrune",
+		"Postcode" : "LD8 2LB"
+	},
+	{
+		"Name" : "Parc Eirin SPS",
+		"Street" : "Williamstown",
+		"Town" : "Hendreforgan",
+		"Postcode" : "CF39 8WA"
+	},
+	{
+		"Name" : "Sawmills SPS",
+		"Street" : "Station Road",
+		"Town" : "Llandeilo",
+		"Postcode" : "SA19 6NL "
+	},
+	{
+		"Name" : "Bonvilston East WwTW",
+		"Street" : "Off A48",
+		"Town" : "Bonvilston",
+		"Postcode" : "CF5 6TN"
+	},
+	{
+		"Name" : "Lyston Eye SPS",
+		"Street" : "Eye Lane",
+		"Town" : "Luston",
+		"Postcode" : "HR6 0DS"
+	}
+]

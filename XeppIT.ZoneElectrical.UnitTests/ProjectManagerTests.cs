@@ -53,7 +53,7 @@ namespace XeppIT.ZoneElectrical.UnitTests
                 Name = Guid.NewGuid().ToString(), 
                 Street = Guid.NewGuid().ToString(), 
                 Town = Guid.NewGuid().ToString(), 
-                PostCode = Guid.NewGuid().ToString() };
+                Postcode = Guid.NewGuid().ToString() };
 
             project.WorkDescription = Guid.NewGuid().ToString();
 
@@ -116,7 +116,7 @@ namespace XeppIT.ZoneElectrical.UnitTests
                 Name = Guid.NewGuid().ToString(),
                 Street = Guid.NewGuid().ToString(),
                 Town = Guid.NewGuid().ToString(),
-                PostCode = Guid.NewGuid().ToString()
+                Postcode = Guid.NewGuid().ToString()
             };
 
             return projectAddress;
@@ -142,7 +142,7 @@ namespace XeppIT.ZoneElectrical.UnitTests
             var result = await _projectManager.GetNextJobNumberAsync();
 
             // Assert
-            // Check the method returned = 6
+            // Check the method returned = 4066
             Assert.IsTrue(result == 4066, $"Wrong result returned, {result}");
         }
 

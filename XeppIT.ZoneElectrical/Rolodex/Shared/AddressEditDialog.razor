@@ -1,0 +1,65 @@
+﻿@using XeppIT.ZoneElectrical.Identity.Services
+@using Microsoft.AspNetCore.Identity
+@using System.Threading
+@using XeppIT.ZoneElectrical.Rolodex.Models
+@inject RolodexService RolodexService
+@inject DialogService DialogService
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12 mb-1">
+            <label for="Name" class="form-check-label">Name</label>
+            <input id="Name" class="form-control mb-3" type="text" aria-label="Name" @bind-value="@Name">
+        </div>
+        <div class="col-12 mb-1">
+            <label for="Street" class="form-check-label">Street</label>
+            <input id="Street" class="form-control mb-3" type="text" aria-label="Street" @bind-value="@Street">
+        </div>
+        <div class="col-12 mb-1">
+            <label for="Town" class="form-check-label">Town</label>
+            <input id="Town" class="form-control mb-3" type="text" aria-label="Town" @bind-value="@Town">
+        </div>
+        <div class="col-12 mb-1">
+            <label for="Postcode" class="form-check-label">Postcode</label>
+            <input id="Postcode" class="form-control mb-3" type="text" aria-label="Postcode" @bind-value="@Postcode">
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <button type="button" class="btn btn-primary" @onclick="() => Save()">Save</button>
+        <button type="button" class="btn btn-secondary ml-1" @onclick="() => Cancel()">Cancel</button>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Address Context { get; set; }
+
+    public string Name { get; set; }
+    public string Street { get; set; }
+    public string Town { get; set; }
+    public string Postcode { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Name = Context.Name;
+        Street = Context.Street;
+        Town = Context.Town;
+        Postcode = Context.Postcode;
+    }
+
+    async Task Save()
+    {
+        Context.Name = Name;
+        Context.Street = Street;
+        Context.Town = Town;
+        Context.Postcode = Postcode;
+
+        await RolodexService.UpdateAddressAsync(Context);
+
+        DialogService.Close();
+    }
+
+    void Cancel()
+    {
+        DialogService.Close();
+    }
+}

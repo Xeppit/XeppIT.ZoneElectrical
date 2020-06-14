@@ -17,16 +17,21 @@ namespace XeppIT.ZoneElectrical.Rolodex.Config
 
             var database = client.GetDatabase(databaseName);
 
-            var companyCollection = database.GetCollection<Company>("Companies");
             var addressCollection = database.GetCollection<Address>("Addresses");
-            
+            var companyCollection = database.GetCollection<Company>("Companies");
+            var contactCollection = database.GetCollection<Contact>("Contacts");
+
             services.AddScoped(provider => companyCollection);
             services.AddScoped(provider => addressCollection);
+            services.AddScoped(provider => contactCollection);
             services.AddScoped<RolodexService>();
 
             // Set indexes on db
             services.AddHostedService<SetIndexOnCompanyNameAsync>();
+            services.AddHostedService<SetIndexOnContactEmail>();
             services.AddHostedService<SeedAddresses>();
+            services.AddHostedService<SeedCompanies>();
+            services.AddHostedService<SeedContacts>();
         }
     }
 }

@@ -12,17 +12,21 @@ namespace XeppIT.ZoneElectrical.Rolodex
         private readonly IMongoCollection<Address> _addressCollection;
 
         private readonly IMongoCollection<Company> _companyCollection;
+
+        private readonly IMongoCollection<Contact> _contactCollection;
         // Create
         // Read
         // Update
         // Delete
 
-        public RolodexService(IMongoCollection<Address> addressCollection, IMongoCollection<Company> companyCollection)
+        public RolodexService(IMongoCollection<Address> addressCollection, IMongoCollection<Company> companyCollection, IMongoCollection<Contact> contactCollection)
         {
             _addressCollection = addressCollection;
             _companyCollection = companyCollection;
+            _contactCollection = contactCollection;
         }
 
+        #region Address
         public async Task CreateAddressAsync(Address address)
         {
             await _addressCollection.InsertOneAsync(address);
@@ -49,7 +53,9 @@ namespace XeppIT.ZoneElectrical.Rolodex
             var filter = Builders<Address>.Filter.Eq(a => a.Id, address.Id);
             var result = await _addressCollection.DeleteOneAsync(filter);
         }
+        #endregion
 
+        #region Company
         public async Task CreateCompanyAsync(Company company)
         {
             await _companyCollection.InsertOneAsync(company);
@@ -82,27 +88,41 @@ namespace XeppIT.ZoneElectrical.Rolodex
             var filter = Builders<Company>.Filter.Eq(a => a.Id, company.Id);
             var result = await _companyCollection.DeleteOneAsync(filter);
         }
-        public async Task AddEmployeeToCompanyAsync(Company company, Contact contact)
-        {
-            var check = company.Employees.FirstOrDefault(e => e.Email == contact.Email);
-            if (check == null)
-            {
-                company.Employees.Add(contact);
-                await UpdateCompanyAsync(company);
-            }
-        }
-        public async Task RemoveEmployeeFromCompanyAsync(Company company, Contact contact)
-        {
-            var check = company.Employees.FirstOrDefault(e => e.Email == contact.Email);
-            if (check != null)
-            {
-                company.Employees.Remove(check);
-                await UpdateCompanyAsync(company);
-            }
-        }
-        public async Task FindEmployeeByEmailAsync(string email)
-        {
+        #endregion
 
+        #region Contact
+        public async Task CreateContactAsync(Contact contact)
+        {
+            await _contactCollection.InsertOneAsync(contact);
         }
+        public async Task<List<Contact>> FindAllContactsAsync()
+        {
+            var filter = Builders<Contact>.Filter.Empty;
+            var result = await _contactCollection.Find(filter).ToListAsync();
+            return result;
+        }
+        public async Task<Contact> FindContactByIdAsync(string id)
+        {
+            var filter = Builders<Contact>.Filter.Eq(a => a.Id, id);
+            var result = await _contactCollection.Find(filter).FirstOrDefaultAsync();
+            return result;
+        }
+        public async Task<Contact> FindContactByEmailAsync(string email)
+        {
+            var filter = Builders<Contact>.Filter.Eq(a => a.Email, email);
+            var result = await _contactCollection.Find(filter).FirstOrDefaultAsync();
+            return result;
+        }
+        public async Task UpdateContactAsync(Contact contact)
+        {
+            var filter = Builders<Contact>.Filter.Eq(a => a.Id, contact.Id);
+            var result = await _contactCollection.ReplaceOneAsync(filter, contact);
+        }
+        public async Task DeleteContactAsync(Contact contact)
+        {
+            var filter = Builders<Contact>.Filter.Eq(a => a.Id, contact.Id);
+            var result = await _contactCollection.DeleteOneAsync(filter);
+        } 
+        #endregion
     }
 }

@@ -38,7 +38,7 @@
                                     <td>@address.Street</td>
                                     <td>@address.Town</td>
                                     <td>@address.Postcode</td>
-                                    <td><button type="button" class="btn btn-primary" @onclick="() => OpenEditProjectDialog(address)"><span class="oi oi-pencil"></span></button></td>
+                                    <td><button type="button" class="btn btn-primary" @onclick="() => OpenEditContactDialog(address)"><span class="oi oi-pencil"></span></button></td>
                                     <td><button type="button" class="btn btn-danger" @onclick="() => DeleteProject(address)"><span class="oi oi-ban"></span></button></td>
                                 </tr>
                             }
@@ -90,7 +90,7 @@
         StateHasChanged();
     }
 
-    async Task OpenEditProjectDialog(Address address)
+    async Task OpenEditContactDialog(Address address)
     {
         await DialogService.OpenAsync<AddressEditDialog>($"Edit Address {address.ToString()}",
             new Dictionary<string, object>() { { "Context", address } });

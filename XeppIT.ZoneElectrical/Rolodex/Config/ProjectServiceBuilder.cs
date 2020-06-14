@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using XeppIT.ZoneElectrical.Project;
 using XeppIT.ZoneElectrical.Rolodex.Models;
@@ -7,7 +8,7 @@ namespace XeppIT.ZoneElectrical.Rolodex.Config
 {
     public static class ProjectServiceBuilder
     {
-        public static void RegisterRolodexServices(
+        public static async Task RegisterRolodexServices(
             this IServiceCollection services, 
             string connectionString,
             string databaseName = "Rolodex"
@@ -29,9 +30,22 @@ namespace XeppIT.ZoneElectrical.Rolodex.Config
             // Set indexes on db
             services.AddHostedService<SetIndexOnCompanyNameAsync>();
             services.AddHostedService<SetIndexOnContactEmail>();
-            services.AddHostedService<SeedAddresses>();
-            services.AddHostedService<SeedCompanies>();
-            services.AddHostedService<SeedContacts>();
+
+            // Seed Data
+            if (await addressCollection.CountDocumentsAsync(Builders<Address>.Filter.Empty) < 10)
+            {
+                services.AddHostedService<SeedAddresses>();
+            }
+
+            if (await companyCollection.CountDocumentsAsync(Builders<Company>.Filter.Empty) < 10)
+            {
+                services.AddHostedService<SeedCompanies>();
+            }
+
+            if (await contactCollection.CountDocumentsAsync(Builders<Contact>.Filter.Empty) < 10)
+            {
+                services.AddHostedService<SeedContacts>();
+            }
         }
     }
 }

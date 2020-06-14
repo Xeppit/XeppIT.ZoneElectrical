@@ -38,7 +38,7 @@
     public string Town { get; set; }
     public string Postcode { get; set; }
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
         Name = Context.Name;
         Street = Context.Street;

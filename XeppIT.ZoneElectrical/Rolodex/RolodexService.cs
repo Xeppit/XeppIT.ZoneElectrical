@@ -78,6 +78,13 @@ namespace XeppIT.ZoneElectrical.Rolodex
             var result = await _companyCollection.Find(filter).FirstOrDefaultAsync();
             return result;
         }
+        public async Task<bool> CompanyNameExistsAsync(string name)
+        {
+            var filter = Builders<Company>.Filter.Eq(a => a.Name, name);
+            var result = await _companyCollection.Find(filter).FirstOrDefaultAsync();
+            
+            return result != null;
+        }
         public async Task UpdateCompanyAsync(Company company)
         {
             var filter = Builders<Company>.Filter.Eq(a => a.Id, company.Id);

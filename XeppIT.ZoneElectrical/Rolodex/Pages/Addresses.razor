@@ -7,9 +7,9 @@
 
 @inject RolodexService RolodexService
 
-
 <AuthorizeView Roles="EMPLOYEE">
     <Authorized>
+        <Test2 modalRef="@modalRef"/>
         <div class="container-fluid">
             <div class="row">
                 <h3>Address List</h3>
@@ -56,6 +56,13 @@
 @code {
     [CascadingParameter]
     private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    private Modal modalRef;
+
+    private void ShowModal()
+    {
+        modalRef.Show();
+    }
 
     System.Security.Claims.ClaimsPrincipal _currentUser;
 

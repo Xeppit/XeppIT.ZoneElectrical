@@ -4,17 +4,14 @@
 @using XeppIT.ZoneElectrical.Rolodex.Models
 @inject ProjectManager ProjectManager
 @inject RolodexService RolodexService
-@inject DialogService DialogService
 
-    <div class="container-fluid">
+<div class="container-fluid">
         <div class="row mb-3">
             <label for="JobNo" class="form-check-label">Job No</label>
             <input id="JobNo" class="form-control mb-3" type="text" aria-label="Job Number" @bind-value="@_projectModel.JobNo">
         </div>
         <div class="row mb-3">
             <h3>AutoComplete</h3>
-            <RadzenAutoComplete Data="@_addresses" TextProperty="Name" 
-                                Style="margin-bottom: 20px" Change="@(args => Change(args, "AutoComplete"))" />
         </div>
         <div class="row mb-3">
             <label for="WorkDescription" class="form-check-label">Work Description</label>
@@ -44,17 +41,16 @@
     async Task Save()
     {
         await ProjectManager.CreateProjectAsync(_projectModel);
-        DialogService.Close();
+
     }
 
     void Cancel()
     {
-        DialogService.Close();
+
     }
 
     async Task OpenTest()
     {
-        await DialogService.OpenAsync<ProjectEditDialog>($"Test",
-            new Dictionary<string, object>() { { "ProjectToEdit", null } });
+
     }
 }

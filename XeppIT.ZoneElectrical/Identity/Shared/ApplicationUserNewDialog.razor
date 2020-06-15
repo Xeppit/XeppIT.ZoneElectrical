@@ -1,6 +1,5 @@
 ﻿@using XeppIT.ZoneElectrical.Identity.Services
 @inject AdminIdentityService AdminIdentityService
-@inject DialogService DialogService
 
 <div class="container-fluid">
     <div class="row mb-3">
@@ -31,11 +30,11 @@
     async Task Save()
     {
         await AdminIdentityService.CreateUser(_newUser);
-        DialogService.Close();
+
     }
 
     void Cancel()
     {
-        DialogService.Close();
+
     }
 }

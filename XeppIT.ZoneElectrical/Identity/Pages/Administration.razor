@@ -6,7 +6,6 @@
 @inject UserManager<ApplicationUser> _UserManager
 @inject RoleManager<ApplicationRole> _RoleManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
-@inject DialogService dialogService
 @inject AdminIdentityService _identityUserService
 
     <AuthorizeView Roles="ADMIN">
@@ -86,8 +85,6 @@
 
     async Task OpenNewUserDialog()
     {
-        await dialogService.OpenAsync<ApplicationUserNewDialog>($"New User");
-
         await GetUsers();
 
         StateHasChanged();
@@ -95,9 +92,6 @@
     
     async Task OpenEditUserDialog(ApplicationUser user)
     {
-        await dialogService.OpenAsync<ApplicationUserEditDialog>($"Edit {user.UserName} profile",
-            new Dictionary<string, object>() { { "UserToEdit", user } });
-
         await GetUsers();
 
         StateHasChanged();
@@ -105,8 +99,7 @@
 
     async Task OpenPasswordResetDialog(ApplicationUser user)
     {
-        await dialogService.OpenAsync<ApplicationUserResetPasswordDialog>($"Reset {user}'s Password",
-            new Dictionary<string, object>() { { "UserToResetPassword", user } });
+
     }
 
     async Task DeleteUser(ApplicationUser user)

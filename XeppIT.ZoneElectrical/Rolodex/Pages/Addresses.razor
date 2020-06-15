@@ -6,7 +6,7 @@
 @using XeppIT.ZoneElectrical.Rolodex.Shared
 
 @inject RolodexService RolodexService
-@inject DialogService DialogService
+
 
 <AuthorizeView Roles="EMPLOYEE">
     <Authorized>
@@ -83,7 +83,7 @@
 
     async Task OpenNewAddressDialog()
     {
-        await DialogService.OpenAsync<AddressNewDialog>($"New Address");
+
 
         await GetAddressList();
 
@@ -92,8 +92,7 @@
 
     async Task OpenEditContactDialog(Address address)
     {
-        await DialogService.OpenAsync<AddressEditDialog>($"Edit Address {address.ToString()}",
-            new Dictionary<string, object>() { { "Context", address } });
+
 
         await GetAddressList();
 

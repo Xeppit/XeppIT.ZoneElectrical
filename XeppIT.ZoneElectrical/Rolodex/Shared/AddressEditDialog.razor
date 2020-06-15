@@ -3,7 +3,7 @@
 @using System.Threading
 @using XeppIT.ZoneElectrical.Rolodex.Models
 @inject RolodexService RolodexService
-@inject DialogService DialogService
+
 
 <div class="container-fluid">
     <div class="row mb-3">
@@ -55,11 +55,11 @@
 
         await RolodexService.UpdateAddressAsync(Context);
 
-        DialogService.Close();
+
     }
 
     void Cancel()
     {
-        DialogService.Close();
+
     }
 }

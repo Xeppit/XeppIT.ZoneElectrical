@@ -6,7 +6,7 @@
 @using XeppIT.ZoneElectrical.Rolodex.Shared
 
 @inject RolodexService RolodexService
-@inject DialogService DialogService
+
 
 <AuthorizeView Roles="EMPLOYEE">
     <Authorized>
@@ -77,7 +77,7 @@
 
     async Task OpenNewDialog()
     {
-        await DialogService.OpenAsync<CompanyNewDialog>($"New Company");
+
 
         await GetContextList();
 
@@ -86,8 +86,6 @@
 
     async Task OpenEditDialog(Company company)
     {
-        await DialogService.OpenAsync<CompanyEditDialog>($"Edit Company {company.Name}",
-            new Dictionary<string, object>() { { "Context", company } });
 
         await GetContextList();
 

@@ -3,7 +3,6 @@
 @using XeppIT.ZoneElectrical.Project.Shared
 
 @inject ProjectManager ProjectManager
-@inject DialogService DialogService
 
 <AuthorizeView Roles="EMPLOYEE">
     <Authorized>
@@ -83,7 +82,6 @@
 
     async Task OpenNewProjectDialog()
     {
-        await DialogService.OpenAsync<ProjectNewDialog>($"New Project");
 
         await GetProjects();
 
@@ -92,8 +90,7 @@
 
     async Task OpenEditProjectDialog(ProjectModel project)
     {
-        await DialogService.OpenAsync<ProjectEditDialog>($"Edit Project {project.ToString()}",
-            new Dictionary<string, object>() { { "ProjectToEdit", project } });
+
 
         await GetProjects();
 

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -6,9 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MongoDB.Bson;
-using MongoDB.Driver;
-using Radzen;
 using XeppIT.ZoneElectrical.Areas.Identity;
 using XeppIT.ZoneElectrical.Data;
 using XeppIT.ZoneElectrical.Identity;
@@ -46,15 +42,15 @@ namespace XeppIT.ZoneElectrical
             services.RegisterMongoStores<ApplicationUser, ApplicationRole>("mongodb://root:admin@192.168.0.13:27017");
             services.RegisterProjectServices("mongodb://root:admin@192.168.0.13:27017");
             services.RegisterRolodexServices("mongodb://root:admin@192.168.0.13:27017");
-            services.AddRazorPages();
+            
+
             services.AddHostedService<MongoSetIndexesAsync>();
             services.AddHostedService<MongoSeedAdminAsync>();
+
+            services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<ApplicationUser>>();
             services.AddSingleton<WeatherForecastService>();
-
-            services.AddScoped<DialogService>();
-            services.AddScoped<NotificationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

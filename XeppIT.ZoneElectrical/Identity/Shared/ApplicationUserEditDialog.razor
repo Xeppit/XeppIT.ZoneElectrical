@@ -2,7 +2,6 @@
 @using Microsoft.AspNetCore.Identity
 @using System.Threading
 @inject AdminIdentityService AdminIdentityService
-@inject DialogService DialogService
 
 <div class="container-fluid">
     <div class="row mb-3">
@@ -120,11 +119,11 @@
         }
 
         var result = await AdminIdentityService.UpdateUser(UserToEdit);
-        DialogService.Close();
+
     }
 
     void Cancel()
     {
-        DialogService.Close();
+
     }
 }

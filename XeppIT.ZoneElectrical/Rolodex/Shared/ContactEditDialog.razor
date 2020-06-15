@@ -1,7 +1,6 @@
 ﻿@using XeppIT.ZoneElectrical.Rolodex.Models
 @inject RolodexService RolodexService
-@inject DialogService DialogService
-@inject NotificationService NotificationService
+
 
 <div class="container-fluid">
     <div class="row mb-3">
@@ -23,8 +22,7 @@
         </div>
         <div class="col-12 mb-1">
             <label for="Postcode" class="form-check-label">Postcode</label>
-            <RadzenAutoComplete Data="@CompanyList" TextProperty="Name"
-                                Style="margin-bottom: 20px" Change="@(args => Change(args, "CompanySelection"))" />
+
         </div>
     </div>
     <div class="row justify-content-end">
@@ -75,10 +73,7 @@
         }
         else
         {
-            var notificationMessages = new NotificationMessage()
-            { Severity = NotificationSeverity.Error, Summary = "Company does not exist", Detail = $"The Company does not exist please add the new company" };
 
-            NotificationService.Notify(notificationMessages);
         }
     }
 
@@ -92,11 +87,10 @@
 
         await RolodexService.UpdateContactAsync(Context);
 
-        DialogService.Close();
     }
 
     void Cancel()
     {
-        DialogService.Close();
+
     }
 }

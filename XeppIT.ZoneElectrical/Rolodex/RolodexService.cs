@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using XeppIT.ZoneElectrical.Rolodex.Models;
 
 namespace XeppIT.ZoneElectrical.Rolodex
@@ -42,6 +44,21 @@ namespace XeppIT.ZoneElectrical.Rolodex
             var filter = Builders<Address>.Filter.Eq(a => a.Id, id);
             var result = await _addressCollection.Find(filter).FirstOrDefaultAsync();
             return result;
+        }
+        public async Task<List<Address>> FindAllAddressesByNameAsync(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return await FindAllAddressesAsync();
+
+            var result = await GetFiltered(
+                _ => _.Name.ToLower().Contains(name.ToLower())).ToListAsync();
+            return result;
+        }
+        // Todo make this into generic service or static extenstion
+        public IMongoQueryable<Address> GetFiltered(Expression<Func<Address, bool>> predicate)
+        {
+            return _addressCollection.AsQueryable()
+                .Where(predicate);
         }
         public async Task UpdateAddressAsync(Address address)
         {

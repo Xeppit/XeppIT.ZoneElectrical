@@ -1,8 +1,11 @@
 ﻿@page "/addresses"
 @using XeppIT.ZoneElectrical.Rolodex.Models
+@using XeppIT.ZoneElectrical.Rolodex.Shared
+@using XeppIT.ZoneElectrical.Unclassified
 @inject NavigationManager NavigationManager
 
 @inject RolodexService RolodexService
+@inject NavigationArgs NavigationArgs
 
 @if (AddressList == null)
 {
@@ -10,6 +13,8 @@
 }
 else
 {
+    <TableRowCell><Button @onclick="() => OpenTestDialog(addressTest1)">rooooof</Button></TableRowCell>
+
     <AuthorizeView Roles="EMPLOYEE">
         <Authorized>
             <Row>
@@ -41,14 +46,14 @@ else
                                 <TableBody>
                                     @foreach (var address in AddressList)
                                     {
-                                    <TableRow>
-                                        <TableRowCell>@address.Name</TableRowCell>
-                                        <TableRowCell>@address.Street</TableRowCell>
-                                        <TableRowCell>@address.Town</TableRowCell>
-                                        <TableRowCell>@address.Postcode</TableRowCell>
-                                        <TableRowCell><Button @onclick="() => OpenEditDialog(address)"><span class="oi oi-pencil" /></Button></TableRowCell>
-                                        <TableRowCell><Button @onclick="() => Delete(address)"><span class="oi oi-ban" /></Button></TableRowCell>
-                                    </TableRow>
+                                        <TableRow>
+                                            <TableRowCell>@address.Name</TableRowCell>
+                                            <TableRowCell>@address.Street</TableRowCell>
+                                            <TableRowCell>@address.Town</TableRowCell>
+                                            <TableRowCell>@address.Postcode</TableRowCell>
+                                            <TableRowCell><Button @onclick="() => OpenEditDialog(address)"><span class="oi oi-pencil" /></Button></TableRowCell>
+                                            <TableRowCell><Button @onclick="() => Delete(address)"><span class="oi oi-ban" /></Button></TableRowCell>
+                                        </TableRow>
                                     }
                                 </TableBody>
                             </Table>
@@ -70,7 +75,11 @@ else
 
     List<Address> AddressList { get; set; }
 
+    Address addressTest1 = new Address(){Name = "tittys"};
+
     private string _nameSearchString;
+
+    private Modal modalRef;
 
     protected override async Task OnInitializedAsync()
     {
@@ -132,4 +141,10 @@ else
 
         StateHasChanged();
     }
+
+    private void OpenTestDialog(Address address)
+    {
+        NavigationArgs.NavigateTo("TestDialog", "Addresses", address);
+    }
+
 }

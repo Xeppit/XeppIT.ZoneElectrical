@@ -14,6 +14,7 @@ using XeppIT.ZoneElectrical.Identity;
 using XeppIT.ZoneElectrical.Identity.StartupConfigs;
 using XeppIT.ZoneElectrical.Project.Configs;
 using XeppIT.ZoneElectrical.Rolodex.Config;
+using XeppIT.ZoneElectrical.Unclassified;
 
 namespace XeppIT.ZoneElectrical
 {
@@ -53,7 +54,7 @@ namespace XeppIT.ZoneElectrical
             services.RegisterMongoStores<ApplicationUser, ApplicationRole>("mongodb://root:admin@192.168.0.13:27017");
             services.RegisterProjectServices("mongodb://root:admin@192.168.0.13:27017");
             services.RegisterRolodexServices("mongodb://root:admin@192.168.0.13:27017");
-            
+            services.AddScoped<NavigationArgs>();
 
             services.AddHostedService<MongoSetIndexesAsync>();
             services.AddHostedService<MongoSeedAdminAsync>();

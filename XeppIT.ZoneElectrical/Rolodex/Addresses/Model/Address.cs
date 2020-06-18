@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace XeppIT.ZoneElectrical.Rolodex.Models
+namespace XeppIT.ZoneElectrical.Rolodex.Addresses.Model
 {
     public class Address
     {

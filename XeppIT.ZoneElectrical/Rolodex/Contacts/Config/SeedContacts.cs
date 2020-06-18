@@ -6,16 +6,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MongoDB.Driver;
-using XeppIT.ZoneElectrical.Rolodex.Models;
+using XeppIT.ZoneElectrical.Rolodex.Contacts.Model;
 
-namespace XeppIT.ZoneElectrical.Rolodex.Config
+namespace XeppIT.ZoneElectrical.Rolodex.Contacts.Config
 {
-    public class SeedCompanies : IHostedService
+    public class SeedContacts : IHostedService
     {
         private readonly IServiceProvider _serviceProvider;
 
-        public SeedCompanies(IServiceProvider serviceProvider)
+        public SeedContacts(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
         }
@@ -28,17 +27,17 @@ namespace XeppIT.ZoneElectrical.Rolodex.Config
             // Get the userManager instance
             //var contactCollection = scope.ServiceProvider.GetRequiredService<IMongoCollection<Contact>>();
             var rolodexService = scope.ServiceProvider.GetRequiredService<RolodexService>();
-            var x = await File.ReadAllTextAsync(@"Rolodex\Config\Companies.json");
-            var y = JsonSerializer.Deserialize<List<Company>>(x);
+            var x = await File.ReadAllTextAsync(@"Rolodex\Config\Contacts.json");
+            var y = JsonSerializer.Deserialize<List<Contact>>(x);
             foreach (var z in y)
             {
                 try
                 {
-                    await rolodexService.CreateCompanyAsync(z);
+                    await rolodexService.CreateContactAsync(z);
                 }
                 catch (Exception)
                 {
-                    // Fail Silent its only seeding
+                    //Fail Silent
                 }
             }
         }

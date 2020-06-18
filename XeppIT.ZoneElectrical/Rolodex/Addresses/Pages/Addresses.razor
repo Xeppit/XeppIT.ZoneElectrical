@@ -1,7 +1,6 @@
 ﻿@page "/addresses"
-@using XeppIT.ZoneElectrical.Rolodex.Models
-@using XeppIT.ZoneElectrical.Rolodex.Shared
 @using XeppIT.ZoneElectrical.Unclassified
+@using XeppIT.ZoneElectrical.Rolodex.Addresses.Model
 @inject NavigationManager NavigationManager
 
 @inject RolodexService RolodexService
@@ -13,8 +12,6 @@
 }
 else
 {
-    <TableRowCell><Button @onclick="() => OpenTestDialog(addressTest1)">rooooof</Button></TableRowCell>
-
     <AuthorizeView Roles="EMPLOYEE">
         <Authorized>
             <Row>
@@ -24,9 +21,10 @@ else
                             <CardTitle>Address List</CardTitle>
                         </CardHeader>
                         <CardBody>
+                            <Button Color="Color.Primary" @onclick="OpenNewDialog">New</Button>
                             <Field>
                                 <FieldLabel>Search</FieldLabel>
-                                <TextEdit Placeholder="Enter name" Text="@_nameSearchString" TextChanged="@OnNameChanged">
+                                <TextEdit Placeholder="Enter name" Text="@_nameSearchString" TextChanged="@OnSearchChanged">
                                     <FieldHelp>Please name to search for.</FieldHelp>
                                 </TextEdit>
                             </Field>
@@ -75,11 +73,7 @@ else
 
     List<Address> AddressList { get; set; }
 
-    Address addressTest1 = new Address(){Name = "tittys"};
-
     private string _nameSearchString;
-
-    private Modal modalRef;
 
     protected override async Task OnInitializedAsync()
     {
@@ -100,11 +94,12 @@ else
         StateHasChanged();
     }
 
-    async Task OnNameChanged(string value)
+    async Task OnSearchChanged(string searchString)
     {
-        _nameSearchString = value;
+        _nameSearchString = searchString;
 
-        var addressList = await RolodexService.FindAllAddressesByNameAsync(value);
+        var addressList = await RolodexService.FindAllAddressesByNameAsync(searchString);
+
         AddressList.Clear();
 
         foreach (var address in addressList)
@@ -115,22 +110,14 @@ else
         StateHasChanged();
     }
 
-
-
-    async Task OpenNewDialog()
+    void OpenNewDialog()
     {
-
-        await RefreshList();
-
-        StateHasChanged();
+        NavigationArgs.NavigateTo("NewAddress", "Addresses");
     }
 
-    async Task OpenEditDialog(Address address)
+    void OpenEditDialog(Address address)
     {
-
-        await RefreshList();
-
-        StateHasChanged();
+        NavigationArgs.NavigateTo("EditAddress", "Addresses");
     }
 
     async Task Delete(Address address)
@@ -141,10 +128,4 @@ else
 
         StateHasChanged();
     }
-
-    private void OpenTestDialog(Address address)
-    {
-        NavigationArgs.NavigateTo("TestDialog", "Addresses", address);
-    }
-
 }

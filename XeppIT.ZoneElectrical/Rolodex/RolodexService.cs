@@ -5,7 +5,9 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
-using XeppIT.ZoneElectrical.Rolodex.Models;
+using XeppIT.ZoneElectrical.Rolodex.Addresses.Model;
+using XeppIT.ZoneElectrical.Rolodex.Companies.Model;
+using XeppIT.ZoneElectrical.Rolodex.Contacts.Model;
 
 namespace XeppIT.ZoneElectrical.Rolodex
 {

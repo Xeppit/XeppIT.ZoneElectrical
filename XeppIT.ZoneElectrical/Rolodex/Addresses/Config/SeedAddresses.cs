@@ -6,10 +6,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MongoDB.Driver;
-using XeppIT.ZoneElectrical.Rolodex.Models;
+using XeppIT.ZoneElectrical.Rolodex.Addresses.Model;
 
-namespace XeppIT.ZoneElectrical.Rolodex.Config
+namespace XeppIT.ZoneElectrical.Rolodex.Addresses.Config
 {
     public class SeedAddresses : IHostedService
     {

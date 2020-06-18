@@ -15,10 +15,4 @@
     <PackageReference Include="MongoDB.Driver" Version="2.10.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Rolodex\Addresses\" />
-    <Folder Include="Rolodex\Contacts\" />
-    <Folder Include="Rolodex\Companies\" />
-  </ItemGroup>
-
 </Project>

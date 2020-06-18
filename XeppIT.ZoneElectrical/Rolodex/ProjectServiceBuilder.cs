@@ -1,10 +1,14 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using XeppIT.ZoneElectrical.Project;
-using XeppIT.ZoneElectrical.Rolodex.Models;
+using XeppIT.ZoneElectrical.Rolodex.Addresses.Config;
+using XeppIT.ZoneElectrical.Rolodex.Addresses.Model;
+using XeppIT.ZoneElectrical.Rolodex.Companies.Config;
+using XeppIT.ZoneElectrical.Rolodex.Companies.Model;
+using XeppIT.ZoneElectrical.Rolodex.Contacts.Config;
+using XeppIT.ZoneElectrical.Rolodex.Contacts.Model;
 
-namespace XeppIT.ZoneElectrical.Rolodex.Config
+namespace XeppIT.ZoneElectrical.Rolodex
 {
     public static class ProjectServiceBuilder
     {

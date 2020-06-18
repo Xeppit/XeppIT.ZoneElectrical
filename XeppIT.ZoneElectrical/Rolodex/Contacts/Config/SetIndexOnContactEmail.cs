@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MongoDB.Driver;
-using XeppIT.ZoneElectrical.Rolodex.Models;
+using XeppIT.ZoneElectrical.Rolodex.Contacts.Model;
 
-namespace XeppIT.ZoneElectrical.Rolodex.Config
+namespace XeppIT.ZoneElectrical.Rolodex.Contacts.Config
 {
     public class SetIndexOnContactEmail : IHostedService
     {

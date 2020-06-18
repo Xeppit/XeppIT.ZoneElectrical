@@ -13,7 +13,7 @@ using XeppIT.ZoneElectrical.Data;
 using XeppIT.ZoneElectrical.Identity;
 using XeppIT.ZoneElectrical.Identity.StartupConfigs;
 using XeppIT.ZoneElectrical.Project.Configs;
-using XeppIT.ZoneElectrical.Rolodex.Config;
+using XeppIT.ZoneElectrical.Rolodex;
 using XeppIT.ZoneElectrical.Unclassified;
 
 namespace XeppIT.ZoneElectrical

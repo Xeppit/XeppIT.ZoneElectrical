@@ -31,14 +31,23 @@ namespace XeppIT.ZoneElectrical.Rolodex
         }
 
         #region Address
-        public async Task CreateAddressAsync(Address address)
+        public async Task<bool> CreateAddressAsync(Address address)
         {
             address.Name = address.Name.Trim();
             address.Street = address.Street.Trim();
             address.Town = address.Town.Trim();
             address.Postcode = address.Postcode.Trim();
 
-            await _addressCollection.InsertOneAsync(address);
+            try
+            {
+                await _addressCollection.InsertOneAsync(address);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
         public async Task<List<Address>> FindAllAddressesAsync()
         {
@@ -67,7 +76,7 @@ namespace XeppIT.ZoneElectrical.Rolodex
             return _addressCollection.AsQueryable()
                 .Where(predicate);
         }
-        public async Task UpdateAddressAsync(Address address)
+        public async Task<ReplaceOneResult> UpdateAddressAsync(Address address)
         {
             address.Name = address.Name.Trim();
             address.Street = address.Street.Trim();
@@ -75,7 +84,8 @@ namespace XeppIT.ZoneElectrical.Rolodex
             address.Postcode = address.Postcode.Trim();
 
             var filter = Builders<Address>.Filter.Eq(a => a.Id, address.Id);
-            var result = await _addressCollection.ReplaceOneAsync(filter, address);
+
+            return await _addressCollection.ReplaceOneAsync(filter, address);
         }
         public async Task DeleteAddressAsync(Address address)
         {

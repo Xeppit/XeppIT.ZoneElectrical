@@ -5,6 +5,16 @@
 @inject NavigationArgs NavigationArgs
 @inject RolodexService RolodexService
 
+<Alert @ref="_alertRef" Color="Color.Danger">
+    <AlertMessage>
+        Create Failed -
+    </AlertMessage>
+    <AlertDescription>
+        Failed to create the address.
+    </AlertDescription>
+    <CloseButton />
+</Alert>
+
 <Row>
     <Column>
         <Card Margin="Margin.Is4.OnY">
@@ -71,13 +81,21 @@
 
 
 @code{
+    Alert _alertRef = new Alert();
     readonly Address _tempAddress = new Address();
 
     private async Task Save()
     {
-        await RolodexService.CreateAddressAsync(_tempAddress);
+        var result = await RolodexService.CreateAddressAsync(_tempAddress);
 
-        NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+        if (!result)
+        {
+            _alertRef.Show();
+        }
+        else
+        {
+            NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+        }
     }
 
     private void Cancel()

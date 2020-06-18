@@ -10,9 +10,9 @@ using XeppIT.ZoneElectrical.Rolodex.Contacts.Model;
 
 namespace XeppIT.ZoneElectrical.Rolodex
 {
-    public static class ProjectServiceBuilder
+    public static class RolodexServiceBuilder
     {
-        public static async Task RegisterRolodexServices(
+        public static void RegisterRolodexServices(
             this IServiceCollection services, 
             string connectionString,
             string databaseName = "Rolodex"
@@ -35,21 +35,22 @@ namespace XeppIT.ZoneElectrical.Rolodex
             services.AddHostedService<SetIndexOnCompanyNameAsync>();
             services.AddHostedService<SetIndexOnContactEmail>();
 
+            // Todo move this to an admin page with option to upload see data
             // Seed Data
-            if (await addressCollection.CountDocumentsAsync(Builders<Address>.Filter.Empty) < 10)
-            {
-                services.AddHostedService<SeedAddresses>();
-            }
+            //if (await addressCollection.CountDocumentsAsync(Builders<Address>.Filter.Empty) < 10)
+            //{
+            //    services.AddHostedService<SeedAddresses>();
+            //}
 
-            if (await companyCollection.CountDocumentsAsync(Builders<Company>.Filter.Empty) < 10)
-            {
-                services.AddHostedService<SeedCompanies>();
-            }
+            //if (await companyCollection.CountDocumentsAsync(Builders<Company>.Filter.Empty) < 10)
+            //{
+            //    services.AddHostedService<SeedCompanies>();
+            //}
 
-            if (await contactCollection.CountDocumentsAsync(Builders<Contact>.Filter.Empty) < 10)
-            {
-                services.AddHostedService<SeedContacts>();
-            }
+            //if (await contactCollection.CountDocumentsAsync(Builders<Contact>.Filter.Empty) < 10)
+            //{
+            //    services.AddHostedService<SeedContacts>();
+            //}
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿@page "/addresses"
 @using XeppIT.ZoneElectrical.Unclassified
 @using XeppIT.ZoneElectrical.Rolodex.Addresses.Model
-@inject NavigationManager NavigationManager
 
 @inject RolodexService RolodexService
 @inject NavigationArgs NavigationArgs
@@ -21,13 +20,14 @@ else
                             <CardTitle>Address List</CardTitle>
                         </CardHeader>
                         <CardBody>
-                            <Button Color="Color.Primary" @onclick="OpenNewDialog">New</Button>
-                            <Field>
-                                <FieldLabel>Search</FieldLabel>
-                                <TextEdit Placeholder="Enter name" Text="@_nameSearchString" TextChanged="@OnSearchChanged">
-                                    <FieldHelp>Please name to search for.</FieldHelp>
-                                </TextEdit>
-                            </Field>
+                            <Fields>
+                                <Field ColumnSize="ColumnSize.Is1">
+                                    <Button Color="Color.Primary" @onclick="GoToNewAddressPage">New</Button>
+                                </Field>
+                                <Field ColumnSize="ColumnSize.Is3">
+                                    <TextEdit Placeholder="Search..." Text="@_nameSearchString" TextChanged="@OnSearchChanged" />
+                                </Field>
+                            </Fields>
                         </CardBody>
                         <CardBody>
                             <Table Narrow="true">
@@ -49,7 +49,7 @@ else
                                             <TableRowCell>@address.Street</TableRowCell>
                                             <TableRowCell>@address.Town</TableRowCell>
                                             <TableRowCell>@address.Postcode</TableRowCell>
-                                            <TableRowCell><Button @onclick="() => OpenEditDialog(address)"><span class="oi oi-pencil" /></Button></TableRowCell>
+                                            <TableRowCell><Button @onclick="() => GoToEditAddressPage(address)"><span class="oi oi-pencil" /></Button></TableRowCell>
                                             <TableRowCell><Button @onclick="() => Delete(address)"><span class="oi oi-ban" /></Button></TableRowCell>
                                         </TableRow>
                                     }
@@ -110,14 +110,14 @@ else
         StateHasChanged();
     }
 
-    void OpenNewDialog()
+    void GoToNewAddressPage()
     {
         NavigationArgs.NavigateTo("NewAddress", "Addresses");
     }
 
-    void OpenEditDialog(Address address)
+    void GoToEditAddressPage(Address address)
     {
-        NavigationArgs.NavigateTo("EditAddress", "Addresses");
+        NavigationArgs.NavigateTo("EditAddress", "Addresses", address);
     }
 
     async Task Delete(Address address)

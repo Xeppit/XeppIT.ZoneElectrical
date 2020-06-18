@@ -1,0 +1,116 @@
+﻿@page "/newaddress"
+@using XeppIT.ZoneElectrical.Unclassified
+@using XeppIT.ZoneElectrical.Rolodex.Addresses.Model
+
+@inject NavigationArgs NavigationArgs
+@inject RolodexService RolodexService
+
+<Row>
+    <Column>
+        <Card Margin="Margin.Is4.OnY">
+            <CardHeader>
+                <CardTitle> Create New Address</CardTitle>
+            </CardHeader>
+            <CardBody>
+                <Field>
+                    <FieldLabel>Name</FieldLabel>
+                    <Validation Validator="@ValidateName">
+                        <TextEdit Placeholder="Enter name" @bind-Text="@_tempAddress.Name">
+                            <Feedback>
+                                <ValidationNone>Please enter the name.</ValidationNone>
+                                <ValidationSuccess>Name is good.</ValidationSuccess>
+                                <ValidationError>Enter valid name!</ValidationError>
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
+                </Field>
+                <Field>
+                    <FieldLabel>Street</FieldLabel>
+                    <Validation Validator="@ValidateStreet">
+                        <TextEdit Placeholder="Enter street" @bind-Text="@_tempAddress.Street">
+                            <Feedback>
+                                <ValidationNone>Please enter the street.</ValidationNone>
+                                <ValidationSuccess>Street is good.</ValidationSuccess>
+                                <ValidationError>Enter valid street!</ValidationError>
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
+                </Field>
+                <Field>
+                    <FieldLabel>Town</FieldLabel>
+                    <Validation Validator="@ValidateTown">
+                        <TextEdit Placeholder="Enter town" @bind-Text="@_tempAddress.Town">
+                            <Feedback>
+                                <ValidationNone>Please enter the town.</ValidationNone>
+                                <ValidationSuccess>Town is good.</ValidationSuccess>
+                                <ValidationError>Enter valid town!</ValidationError>
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
+                </Field>
+                <Field>
+                    <FieldLabel>Postcode</FieldLabel>
+                    <Validation Validator="@ValidatePostcode">
+                        <TextEdit Placeholder="Enter postcode" @bind-Text="@_tempAddress.Postcode">
+                            <Feedback>
+                                <ValidationNone>Please enter the postcode.</ValidationNone>
+                                <ValidationSuccess>Postcode is good.</ValidationSuccess>
+                                <ValidationError>Enter valid postcode!</ValidationError>
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
+                </Field>
+            </CardBody>
+            <CardFooter>
+                <Button @onclick="Save">Save</Button>
+                <Button @onclick="Cancel">Cancel</Button>
+            </CardFooter>
+        </Card>
+    </Column>
+</Row>
+
+
+@code{
+    readonly Address _tempAddress = new Address();
+
+    private async Task Save()
+    {
+        await RolodexService.CreateAddressAsync(_tempAddress);
+
+        NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+    }
+
+    private void Cancel()
+    {
+        NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+    }
+
+    private void ValidateName(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void ValidateStreet(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void ValidateTown(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void ValidatePostcode(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+}

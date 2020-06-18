@@ -1,0 +1,94 @@
+﻿@page "/editcompany"
+@using XeppIT.ZoneElectrical.Unclassified
+@using XeppIT.ZoneElectrical.Rolodex.Companies.Model
+
+@inject NavigationArgs NavigationArgs
+@inject RolodexService RolodexService
+
+<Alert @ref="_alertRef" Color="Color.Danger">
+    <AlertMessage>
+        Edit Failed -
+    </AlertMessage>
+    <AlertDescription>
+        Failed to edit the company.
+    </AlertDescription>
+    <CloseButton />
+</Alert>
+
+<Row>
+    <Column>
+        <Card Margin="Margin.Is4.OnY">
+            <CardHeader>
+                <CardTitle> Create New Company</CardTitle>
+            </CardHeader>
+            <CardBody>
+                <Field>
+                    <FieldLabel>Name</FieldLabel>
+                    <Validation Validator="@ValidateName">
+                        <TextEdit Placeholder="Enter name" @bind-Text="@_tempCompany.Name">
+                            <Feedback>
+                                <ValidationNone>Please enter the name.</ValidationNone>
+                                <ValidationSuccess>Name is good.</ValidationSuccess>
+                                <ValidationError>Enter valid name!</ValidationError>
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
+                </Field>
+            </CardBody>
+            <CardFooter>
+                <Button @onclick="Save">Save</Button>
+                <Button @onclick="Cancel">Cancel</Button>
+            </CardFooter>
+        </Card>
+    </Column>
+</Row>
+
+
+@code{
+    Alert _alertRef = new Alert();
+    readonly Company _tempCompany = new Company();
+
+    protected override void OnInitialized()
+    {
+        if (NavigationArgs.Context != null)
+        {
+            var context = (Company)NavigationArgs.Context;
+
+            _tempCompany.Id = context.Id;
+            _tempCompany.Name = context.Name;
+        }
+    }
+
+    private async Task Save()
+    {
+        var result = await RolodexService.UpdateCompanyAsync(_tempCompany);
+
+        if (result.IsAcknowledged)
+        {
+            if (result.ModifiedCount == 0)
+            {
+                _alertRef.Show();
+            }
+            else
+            {
+                NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+            }
+        }
+        else
+        {
+            _alertRef.Show();
+        }
+    }
+
+    private void Cancel()
+    {
+        NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+    }
+
+    private void ValidateName(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+}

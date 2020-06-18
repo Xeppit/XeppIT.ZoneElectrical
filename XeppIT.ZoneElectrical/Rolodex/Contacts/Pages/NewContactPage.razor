@@ -1,0 +1,188 @@
+﻿@page "/newcontact"
+@using XeppIT.ZoneElectrical.Unclassified
+@using XeppIT.ZoneElectrical.Rolodex.Contacts.Model
+@using Blazorise.Components
+@using XeppIT.ZoneElectrical.Rolodex.Companies.Model
+@using XeppIT.ZoneElectrical.Rolodex.Companies.Pages
+
+@inject NavigationArgs NavigationArgs
+@inject RolodexService RolodexService
+
+<Alert @ref="_alertRef" Color="Color.Danger">
+    <AlertMessage>
+        Create Failed -
+    </AlertMessage>
+    <AlertDescription>
+        Failed to create the contact.
+    </AlertDescription>
+    <CloseButton />
+</Alert>
+
+<Row>
+    <Column>
+        <Card Margin="Margin.Is4.OnY">
+            <CardHeader>
+                <CardTitle> Create New Contact</CardTitle>
+            </CardHeader>
+            <CardBody>
+                <Field>
+                    <FieldLabel>Select Company</FieldLabel>
+                    <FieldBody>
+                        <Addons>
+                            <Addon AddonType="AddonType.Body">
+                                <Select TValue="string" SelectedValue="@SelectedListValue" SelectedValueChanged="@SelectedListValueChanged">
+                                    @foreach (var company in _companyList)
+                                    {
+                                        <SelectItem Value="company.Name">@company.Name</SelectItem>
+                                    }
+                                </Select>
+                            </Addon>
+                            <Addon AddonType="AddonType.End">
+                                <Button Color="Color.Primary" @onclick="CreateNewCompany">Create New</Button>
+                            </Addon>
+                        </Addons>
+                    </FieldBody>
+                </Field>
+                <Field>
+                    <FieldLabel>First Name</FieldLabel>
+                    <Validation Validator="@ValidateFirstName">
+                        <TextEdit Placeholder="Enter first name" @bind-Text="@_tempContact.FirstName">
+                            <Feedback>
+                                <ValidationNone>Please enter the first name.</ValidationNone>
+                                <ValidationSuccess>First Name is good.</ValidationSuccess>
+                                <ValidationError>Enter valid first name!</ValidationError>
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
+                </Field>
+                <Field>
+                    <FieldLabel>Last Name</FieldLabel>
+                    <Validation Validator="@ValidateLastName">
+                        <TextEdit Placeholder="Enter first name" @bind-Text="@_tempContact.LastName">
+                            <Feedback>
+                                <ValidationNone>Please enter the first name.</ValidationNone>
+                                <ValidationSuccess>First Name is good.</ValidationSuccess>
+                                <ValidationError>Enter valid first name!</ValidationError>
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
+                </Field>
+                <Field>
+                    <FieldLabel>Email</FieldLabel>
+                    <Validation Validator="@ValidateEmail">
+                        <TextEdit Placeholder="Enter email" @bind-Text="@_tempContact.Email">
+                            <Feedback>
+                                <ValidationNone>Please enter the email.</ValidationNone>
+                                <ValidationSuccess>Email is good.</ValidationSuccess>
+                                <ValidationError>Enter valid email!</ValidationError>
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
+                </Field>
+                <Field>
+                    <FieldLabel>Phone Number</FieldLabel>
+                    <Validation Validator="@ValidatePhoneNumber">
+                        <TextEdit Placeholder="Enter phone number" @bind-Text="@_tempContact.PhoneNumber">
+                            <Feedback>
+                                <ValidationNone>Please enter the phone number.</ValidationNone>
+                                <ValidationSuccess>Phone number is good.</ValidationSuccess>
+                                <ValidationError>Enter valid phone number!</ValidationError>
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
+                </Field>
+            </CardBody>
+            <CardFooter>
+                <Button @onclick="Save">Save</Button>
+                <Button @onclick="Cancel">Cancel</Button>
+            </CardFooter>
+        </Card>
+    </Column>
+</Row>
+
+
+@code{
+    Alert _alertRef = new Alert();
+    readonly Contact _tempContact = new Contact();
+    List<Company> _companyList = new List<Company>();
+    string SelectedListValue { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        _companyList = await RolodexService.FindAllCompaniesAsync();
+        SelectedListValueChanged("Morgan Sindall");
+    }
+
+    void SelectedListValueChanged(string newValue)
+    {
+        SelectedListValue = newValue;
+
+        var companyName = newValue.ToString();
+
+        _tempContact.Company = companyName;
+    }
+
+    private async Task Save()
+    {
+        if (string.IsNullOrEmpty(_tempContact.Company) || _tempContact.Company == "Not Specified")
+        {
+            return;
+        }
+        var result = await RolodexService.CreateContactAsync(_tempContact);
+
+        if (!result)
+        {
+            _alertRef.Show();
+        }
+        else
+        {
+            NavigationArgs.NavigateTo("Contacts");
+        }
+    }
+
+    private void Cancel()
+    {
+        NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+    }
+
+    private void ValidateFirstName(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void ValidateLastName(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void ValidateEmail(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void ValidatePhoneNumber(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void ValidateCompany(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void CreateNewCompany()
+    {
+        NavigationArgs.NavigateTo("NewCompany", "NewContact");
+    }
+
+}

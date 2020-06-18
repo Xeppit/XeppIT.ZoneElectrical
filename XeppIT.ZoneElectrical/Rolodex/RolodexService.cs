@@ -61,13 +61,15 @@ namespace XeppIT.ZoneElectrical.Rolodex
             var result = await _addressCollection.Find(filter).FirstOrDefaultAsync();
             return result;
         }
+
+        // Todo Needs refactoring badly
         public async Task<List<Address>> FindAllAddressesByNameAsync(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
                 return await FindAllAddressesAsync();
 
             var result = await GetFiltered(
-                _ => _.Name.ToLower().Contains(name.ToLower())).ToListAsync();
+                _ => _.ToString().ToLower().Contains(name.ToLower())).ToListAsync();
             return result;
         }
         // Todo make this into generic service or static extenstion
@@ -95,15 +97,27 @@ namespace XeppIT.ZoneElectrical.Rolodex
         #endregion
 
         #region Company
-        public async Task CreateCompanyAsync(Company company)
+        public async Task<bool> CreateCompanyAsync(Company company)
         {
-            await _companyCollection.InsertOneAsync(company);
+            company.Name = company.Name.Trim();
+
+            try
+            {
+                await _companyCollection.InsertOneAsync(company);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
         public async Task<List<Company>> FindAllCompaniesAsync()
         {
             var filter = Builders<Company>.Filter.Empty;
             var result = await _companyCollection.Find(filter).ToListAsync();
-            return result;
+            var orderBy = result.OrderBy(c => c.Name);
+            return orderBy.ToList();
         }
         public async Task<Company> FindCompanyByIdAsync(string id)
         {
@@ -117,6 +131,23 @@ namespace XeppIT.ZoneElectrical.Rolodex
             var result = await _companyCollection.Find(filter).FirstOrDefaultAsync();
             return result;
         }
+
+        // Todo Needs refactoring badly
+        public async Task<List<Company>> FindAllCompaniesByNameAsync(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return await FindAllCompaniesAsync();
+
+            var result = await GetFilteredCompany(
+                _ => _.Name.ToLower().Contains(name.ToLower())).ToListAsync();
+            return result;
+        }
+        // Todo make this into generic service or static extenstion
+        public IMongoQueryable<Company> GetFilteredCompany(Expression<Func<Company, bool>> predicate)
+        {
+            return _companyCollection.AsQueryable()
+                .Where(predicate);
+        }
         public async Task<bool> CompanyNameExistsAsync(string name)
         {
             var filter = Builders<Company>.Filter.Eq(a => a.Name, name);
@@ -124,10 +155,12 @@ namespace XeppIT.ZoneElectrical.Rolodex
             
             return result != null;
         }
-        public async Task UpdateCompanyAsync(Company company)
+        public async Task<ReplaceOneResult> UpdateCompanyAsync(Company company)
         {
+            company.Name = company.Name.Trim();
+
             var filter = Builders<Company>.Filter.Eq(a => a.Id, company.Id);
-            var result = await _companyCollection.ReplaceOneAsync(filter, company);
+            return await _companyCollection.ReplaceOneAsync(filter, company);
         }
         public async Task DeleteCompanyAsync(Company company)
         {
@@ -137,9 +170,24 @@ namespace XeppIT.ZoneElectrical.Rolodex
         #endregion
 
         #region Contact
-        public async Task CreateContactAsync(Contact contact)
+        public async Task<bool> CreateContactAsync(Contact contact)
         {
-            await _contactCollection.InsertOneAsync(contact);
+            contact.FirstName = contact.FirstName.Trim();
+            contact.LastName = contact.LastName.Trim();
+            contact.Email = contact.Email.Trim();
+            contact.PhoneNumber = contact.PhoneNumber.Trim();
+            contact.Company = contact.Company.Trim();
+
+            try
+            {
+                await _contactCollection.InsertOneAsync(contact);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            return true;
         }
         public async Task<List<Contact>> FindAllContactsAsync()
         {
@@ -159,10 +207,32 @@ namespace XeppIT.ZoneElectrical.Rolodex
             var result = await _contactCollection.Find(filter).FirstOrDefaultAsync();
             return result;
         }
-        public async Task UpdateContactAsync(Contact contact)
+        // Todo Needs refactoring badly
+        public async Task<List<Contact>> FindAllContactsByNameAsync(string name)
         {
+            if (string.IsNullOrWhiteSpace(name))
+                return await FindAllContactsAsync();
+
+            var result = await GetFilteredContact(
+                _ => _.Email.ToLower().Contains(name.ToLower())).ToListAsync();
+            return result;
+        }
+        // Todo make this into generic service or static extenstion
+        public IMongoQueryable<Contact> GetFilteredContact(Expression<Func<Contact, bool>> predicate)
+        {
+            return _contactCollection.AsQueryable()
+                .Where(predicate);
+        }
+        public async Task<ReplaceOneResult> UpdateContactAsync(Contact contact)
+        {
+            contact.FirstName = contact.FirstName.Trim();
+            contact.LastName = contact.LastName.Trim();
+            contact.Email = contact.Email.Trim();
+            contact.PhoneNumber = contact.PhoneNumber.Trim();
+            contact.Company = contact.Company.Trim();
+
             var filter = Builders<Contact>.Filter.Eq(a => a.Id, contact.Id);
-            var result = await _contactCollection.ReplaceOneAsync(filter, contact);
+            return await _contactCollection.ReplaceOneAsync(filter, contact);
         }
         public async Task DeleteContactAsync(Contact contact)
         {

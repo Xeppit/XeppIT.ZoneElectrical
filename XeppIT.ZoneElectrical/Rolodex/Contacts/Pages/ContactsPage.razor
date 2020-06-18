@@ -1,0 +1,142 @@
+﻿@page "/contacts"
+@using XeppIT.ZoneElectrical.Unclassified
+@using XeppIT.ZoneElectrical.Rolodex.Contacts.Model
+
+@inject RolodexService RolodexService
+@inject NavigationArgs NavigationArgs
+
+@if (ContactList == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <AuthorizeView Roles="EMPLOYEE">
+        <Authorized>
+            <Row>
+                <Column>
+                    <Card Margin="Margin.Is4.OnY">
+                        <CardHeader>
+                            <CardTitle>Contact List</CardTitle>
+                        </CardHeader>
+                        <CardBody>
+                            <Fields>
+                                <Field>
+                                    <Button Color="Color.Primary" @onclick="GoToNewContactPage">Create New</Button>
+                                </Field>
+                                <Field>
+                                    <TextEdit Placeholder="Search..." Text="@_nameSearchString" TextChanged="@OnSearchChanged" />
+                                </Field>
+                            </Fields>
+                        </CardBody>
+                        <CardBody>
+                            <Table Narrow="true">
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHeaderCell>First Name</TableHeaderCell>
+                                        <TableHeaderCell>Last Name</TableHeaderCell>
+                                        <TableHeaderCell>Email</TableHeaderCell>
+                                        <TableHeaderCell>Phone Number</TableHeaderCell>
+                                        <TableHeaderCell>Company</TableHeaderCell>
+                                        <TableHeaderCell>Edit</TableHeaderCell>
+                                        <TableHeaderCell>Delete</TableHeaderCell>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    @foreach (var contact in ContactList)
+                                    {
+                                    <TableRow>
+                                        <TableRowCell>@contact.FirstName</TableRowCell>
+                                        <TableRowCell>@contact.LastName</TableRowCell>
+                                        <TableRowCell>@contact.Email</TableRowCell>
+                                        <TableRowCell>@contact.PhoneNumber</TableRowCell>
+                                        <TableRowCell>@contact.Company</TableRowCell>
+                                        <TableRowCell>
+                                            <Button @onclick="() => GoToEditContactPage(contact)">
+                                                <Icon Name="IconName.Edit" />
+                                            </Button>
+                                        </TableRowCell>
+                                        <TableRowCell>
+                                            <Button @onclick="() => Delete(contact)">
+                                                <Icon Name="IconName.Delete" />
+                                            </Button>
+                                        </TableRowCell>
+                                    </TableRow>
+                                    }
+                                </TableBody>
+                            </Table>
+                        </CardBody>
+                    </Card>
+                </Column>
+            </Row>
+        </Authorized>
+        <NotAuthorized>
+            <p>You're not logged in as admin.</p>
+        </NotAuthorized>
+    </AuthorizeView>
+}
+
+
+@code {
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    List<Contact> ContactList { get; set; }
+
+    private string _nameSearchString;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ContactList = await RolodexService.FindAllContactsAsync();
+    }
+
+    public async Task RefreshList()
+    {
+        var contactList = await RolodexService.FindAllContactsAsync();
+
+        ContactList.Clear();
+
+        foreach (var contact in contactList)
+        {
+            ContactList.Add(contact);
+        }
+
+        StateHasChanged();
+    }
+
+    async Task OnSearchChanged(string searchString)
+    {
+        _nameSearchString = searchString;
+
+        var contactList = await RolodexService.FindAllContactsByNameAsync(searchString);
+
+        ContactList.Clear();
+
+        foreach (var contact in contactList)
+        {
+            ContactList.Add(contact);
+        }
+
+        StateHasChanged();
+    }
+
+    void GoToNewContactPage()
+    {
+        NavigationArgs.NavigateTo("NewContact", "Contacts");
+    }
+
+    void GoToEditContactPage(Contact contact)
+    {
+        NavigationArgs.NavigateTo("EditContact", "Contacts", contact);
+    }
+
+    async Task Delete(Contact contact)
+    {
+        await RolodexService.DeleteContactAsync(contact);
+
+        await RefreshList();
+
+        StateHasChanged();
+    }
+}
+

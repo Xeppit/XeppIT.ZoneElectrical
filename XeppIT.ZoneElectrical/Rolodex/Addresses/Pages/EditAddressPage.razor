@@ -108,10 +108,14 @@
             {
                 _alertRef.Show();
             }
+            else
+            {
+                NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+            }
         }
         else
         {
-            NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+            _alertRef.Show();
         }
     }
 

@@ -1,0 +1,134 @@
+﻿@page "/companies"
+@using XeppIT.ZoneElectrical.Unclassified
+@using XeppIT.ZoneElectrical.Rolodex.Companies.Model
+
+@inject RolodexService RolodexService
+@inject NavigationArgs NavigationArgs
+
+@if (CompanyList == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <AuthorizeView Roles="EMPLOYEE">
+        <Authorized>
+            <Row>
+                <Column>
+                    <Card Margin="Margin.Is4.OnY">
+                        <CardHeader>
+                            <CardTitle>Company List</CardTitle>
+                        </CardHeader>
+                        <CardBody>
+                            <Fields>
+                                <Field>
+                                    <Button Color="Color.Primary" @onclick="GoToNewCompanyPage">Create New</Button>
+                                </Field>
+                                <Field>
+                                    <TextEdit Placeholder="Search..." Text="@_nameSearchString" TextChanged="@OnSearchChanged" />
+                                </Field>
+                            </Fields>
+                        </CardBody>
+                        <CardBody>
+                            <Table Narrow="true">
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHeaderCell>Name</TableHeaderCell>
+                                        <TableHeaderCell>Edit</TableHeaderCell>
+                                        <TableHeaderCell>Delete</TableHeaderCell>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    @foreach (var company in CompanyList)
+                                    {
+                                        <TableRow>
+                                            <TableRowCell>@company.Name</TableRowCell>
+                                            <TableRowCell>
+                                                <Button @onclick="() => GoToEditCompanyPage(company)">
+                                                    <Icon Name="IconName.Edit" />
+                                                </Button>
+                                            </TableRowCell>
+                                            <TableRowCell>
+                                                <Button @onclick="() => Delete(company)">
+                                                    <Icon Name="IconName.Delete" />
+                                                </Button>
+                                            </TableRowCell>
+                                        </TableRow>
+                                    }
+                                </TableBody>
+                            </Table>
+                        </CardBody>
+                    </Card>
+                </Column>
+            </Row>
+        </Authorized>
+        <NotAuthorized>
+            <p>You're not logged in as admin.</p>
+        </NotAuthorized>
+    </AuthorizeView>
+}
+
+
+@code {
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    List<Company> CompanyList { get; set; }
+
+    private string _nameSearchString;
+
+    protected override async Task OnInitializedAsync()
+    {
+        CompanyList = await RolodexService.FindAllCompaniesAsync();
+    }
+
+    public async Task RefreshList()
+    {
+        var companyList = await RolodexService.FindAllCompaniesAsync();
+
+        CompanyList.Clear();
+
+        foreach (var company in companyList)
+        {
+            CompanyList.Add(company);
+        }
+
+        StateHasChanged();
+    }
+
+    async Task OnSearchChanged(string searchString)
+    {
+        _nameSearchString = searchString;
+
+        var companyList = await RolodexService.FindAllCompaniesByNameAsync(searchString);
+
+        CompanyList.Clear();
+
+        foreach (var company in companyList)
+        {
+            CompanyList.Add(company);
+        }
+
+        StateHasChanged();
+    }
+
+    void GoToNewCompanyPage()
+    {
+        NavigationArgs.NavigateTo("NewCompany", "Companies");
+    }
+
+    void GoToEditCompanyPage(Company company)
+    {
+        NavigationArgs.NavigateTo("EditCompany", "Companies", company);
+    }
+
+    async Task Delete(Company company)
+    {
+        await RolodexService.DeleteCompanyAsync(company);
+
+        await RefreshList();
+
+        StateHasChanged();
+    }
+}
+

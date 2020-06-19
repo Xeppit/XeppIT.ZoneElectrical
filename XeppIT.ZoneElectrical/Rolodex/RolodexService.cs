@@ -30,6 +30,12 @@ namespace XeppIT.ZoneElectrical.Rolodex
             _contactCollection = contactCollection;
         }
 
+        public IMongoQueryable<T> GetFiltered<T>(IMongoCollection<T> collection, Expression<Func<T, bool>> predicate)
+        {
+            return collection.AsQueryable()
+                .Where(predicate);
+        }
+
         #region Address
         public async Task<bool> CreateAddressAsync(Address address)
         {
@@ -68,16 +74,13 @@ namespace XeppIT.ZoneElectrical.Rolodex
             if (string.IsNullOrWhiteSpace(name))
                 return await FindAllAddressesAsync();
 
-            var result = await GetFiltered(
-                _ => _.ToString().ToLower().Contains(name.ToLower())).ToListAsync();
+            var result = await GetFiltered(_addressCollection,
+                _ => _.Name.ToLower().Contains(name.ToLower())).ToListAsync();
             return result;
         }
         // Todo make this into generic service or static extenstion
-        public IMongoQueryable<Address> GetFiltered(Expression<Func<Address, bool>> predicate)
-        {
-            return _addressCollection.AsQueryable()
-                .Where(predicate);
-        }
+
+
         public async Task<ReplaceOneResult> UpdateAddressAsync(Address address)
         {
             address.Name = address.Name.Trim();

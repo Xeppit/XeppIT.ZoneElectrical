@@ -35,8 +35,8 @@
                                     <td>@project.JobNo</td>
                                     <td>@project.ProjectAddress.Name</td>
                                     <td>@project.WorkDescription</td>
-                                    <td>@project.ProjectManager.Company</td>
-                                    <td>@project.ProjectManager.ToString()</td>
+                                    <td>@project.Client.Company</td>
+                                    <td>@project.Client.ToString()</td>
                                     <td><button type="button" class="btn btn-primary" @onclick="() => OpenEditProjectDialog(project)"><span class="oi oi-pencil"></span></button></td>
                                     <td><button type="button" class="btn btn-danger" @onclick="() => DeleteProject(project)"><span class="oi oi-ban"></span></button></td>
                                 </tr>

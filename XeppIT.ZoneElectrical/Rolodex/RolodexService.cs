@@ -18,10 +18,6 @@ namespace XeppIT.ZoneElectrical.Rolodex
         private readonly IMongoCollection<Company> _companyCollection;
 
         private readonly IMongoCollection<Contact> _contactCollection;
-        // Create
-        // Read
-        // Update
-        // Delete
 
         public RolodexService(IMongoCollection<Address> addressCollection, IMongoCollection<Company> companyCollection, IMongoCollection<Contact> contactCollection)
         {
@@ -68,7 +64,6 @@ namespace XeppIT.ZoneElectrical.Rolodex
             return result;
         }
 
-        // Todo Needs refactoring badly
         public async Task<List<Address>> FindAllAddressesByNameAsync(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -78,8 +73,6 @@ namespace XeppIT.ZoneElectrical.Rolodex
                 _ => _.Name.ToLower().Contains(name.ToLower())).ToListAsync();
             return result;
         }
-        // Todo make this into generic service or static extenstion
-
 
         public async Task<ReplaceOneResult> UpdateAddressAsync(Address address)
         {
@@ -135,22 +128,16 @@ namespace XeppIT.ZoneElectrical.Rolodex
             return result;
         }
 
-        // Todo Needs refactoring badly
         public async Task<List<Company>> FindAllCompaniesByNameAsync(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
                 return await FindAllCompaniesAsync();
 
-            var result = await GetFilteredCompany(
+            var result = await GetFiltered(_companyCollection, 
                 _ => _.Name.ToLower().Contains(name.ToLower())).ToListAsync();
             return result;
         }
-        // Todo make this into generic service or static extenstion
-        public IMongoQueryable<Company> GetFilteredCompany(Expression<Func<Company, bool>> predicate)
-        {
-            return _companyCollection.AsQueryable()
-                .Where(predicate);
-        }
+
         public async Task<bool> CompanyNameExistsAsync(string name)
         {
             var filter = Builders<Company>.Filter.Eq(a => a.Name, name);
@@ -216,16 +203,11 @@ namespace XeppIT.ZoneElectrical.Rolodex
             if (string.IsNullOrWhiteSpace(name))
                 return await FindAllContactsAsync();
 
-            var result = await GetFilteredContact(
+            var result = await GetFiltered(_contactCollection,
                 _ => _.Email.ToLower().Contains(name.ToLower())).ToListAsync();
             return result;
         }
-        // Todo make this into generic service or static extenstion
-        public IMongoQueryable<Contact> GetFilteredContact(Expression<Func<Contact, bool>> predicate)
-        {
-            return _contactCollection.AsQueryable()
-                .Where(predicate);
-        }
+
         public async Task<ReplaceOneResult> UpdateContactAsync(Contact contact)
         {
             contact.FirstName = contact.FirstName.Trim();

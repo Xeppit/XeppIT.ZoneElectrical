@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using XeppIT.ZoneElectrical.Project.States;
 
 namespace XeppIT.ZoneElectrical.Project.Configs
 {
@@ -18,6 +19,7 @@ namespace XeppIT.ZoneElectrical.Project.Configs
             var projectCollection = database.GetCollection<Models.ProjectModel>("Projects");
 
             services.AddScoped(provider => projectCollection);
+            services.AddScoped<ProjectEditState>();
             services.AddScoped<ProjectManager>();
 
             // Set indexes on db

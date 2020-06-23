@@ -1,0 +1,148 @@
+﻿@page "/projects"
+@using XeppIT.ZoneElectrical.Rolodex.Addresses.Model
+@using XeppIT.ZoneElectrical.Rolodex.Addresses.States
+@using XeppIT.ZoneElectrical.Rolodex
+@using XeppIT.ZoneElectrical.Project.Models
+@using XeppIT.ZoneElectrical.Project.States
+
+@inject NavigationManager NavigationManager
+@inject ProjectManager ProjectManager
+@inject ProjectEditState ProjectEditState
+
+@if (ProjectList == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <AuthorizeView Roles="EMPLOYEE">
+        <Authorized>
+            <Row>
+                <Column>
+                    <Card Margin="Margin.Is4.OnY">
+                        <CardHeader>
+                            <CardTitle>Project List</CardTitle>
+                        </CardHeader>
+                        <CardBody>
+                            <Fields>
+                                <Field>
+                                    <Button Color="Color.Primary" @onclick="GoToNewProjectPage">Create New</Button>
+                                </Field>
+                                <Field>
+                                    <TextEdit Placeholder="Search..." Text="@_nameSearchString" TextChanged="@OnSearchChanged" />
+                                </Field>
+                            </Fields>
+                        </CardBody>
+                        <CardBody>
+                            <Table Narrow="true">
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHeaderCell>Job Number</TableHeaderCell>
+                                        <TableHeaderCell>Description</TableHeaderCell>
+                                        <TableHeaderCell>Company</TableHeaderCell>
+                                        <TableHeaderCell>Client</TableHeaderCell>
+                                        <TableHeaderCell>Status</TableHeaderCell>
+                                        <TableHeaderCell>Edit</TableHeaderCell>
+                                        <TableHeaderCell>Delete</TableHeaderCell>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    @foreach (var project in ProjectList)
+                                    {
+                                    <TableRow>
+                                        <TableRowCell>@project.JobNo</TableRowCell>
+                                        <TableRowCell>@project.WorkDescription</TableRowCell>
+                                        <TableRowCell>@project.Company</TableRowCell>
+                                        <TableRowCell>@project.Client.ToString()</TableRowCell>
+                                        <TableRowCell>@project.Status</TableRowCell>
+                                        <TableRowCell>
+                                            <Button @onclick="() => GoToEditProjectPage(project)">
+                                                <Icon Name="IconName.Edit" />
+                                            </Button>
+                                        </TableRowCell>
+                                        <TableRowCell>
+                                            <Button @onclick="() => Delete(project)">
+                                                <Icon Name="IconName.Delete" />
+                                            </Button>
+                                        </TableRowCell>
+                                    </TableRow>
+                                    }
+                                </TableBody>
+                            </Table>
+                        </CardBody>
+                    </Card>
+                </Column>
+            </Row>
+        </Authorized>
+        <NotAuthorized>
+            <p>You're not logged in as admin.</p>
+        </NotAuthorized>
+    </AuthorizeView>
+}
+
+
+@code {
+    [CascadingParameter]
+    private Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
+    List<ProjectModel> ProjectList { get; set; }
+
+    private string _nameSearchString;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ProjectList = await ProjectManager.GetAllProjectsAsync();
+    }
+
+    public async Task RefreshList()
+    {
+        var projectList = await ProjectManager.GetAllProjectsAsync();
+
+        ProjectList.Clear();
+
+        foreach (var project in projectList)
+        {
+            ProjectList.Add(project);
+        }
+
+        StateHasChanged();
+    }
+
+    async Task OnSearchChanged(string searchString)
+    {
+        //_nameSearchString = searchString;
+
+        //var addressList = await RolodexService.FindAllAddressesByNameAsync(searchString);
+
+        //AddressList.Clear();
+
+        //foreach (var address in addressList)
+        //{
+        //    AddressList.Add(address);
+        //}
+
+        //StateHasChanged();
+    }
+
+    void GoToNewProjectPage()
+    {
+        ProjectEditState.ProjectToEdit = new ProjectModel();
+        NavigationManager.NavigateTo("NewProject");
+    }
+
+    void GoToEditProjectPage(ProjectModel project)
+    {
+        ProjectEditState.ProjectToEdit = project;
+        NavigationManager.NavigateTo("EditProject");
+    }
+
+    async Task Delete(ProjectModel project)
+    {
+        await ProjectManager.DeleteProjectAsync(project);
+
+        await RefreshList();
+
+        StateHasChanged();
+    }
+}
+

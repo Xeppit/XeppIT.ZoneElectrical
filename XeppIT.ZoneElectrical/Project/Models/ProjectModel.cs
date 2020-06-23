@@ -14,10 +14,8 @@ namespace XeppIT.ZoneElectrical.Project.Models
         public int JobNo { get; set; }
         public ProjectAddress ProjectAddress { get; set; } = new ProjectAddress();
         public string WorkDescription { get; set; }
+        public string Company { get; set; }
         public ProjectContact Client { get; set; } = new ProjectContact();
-        public List<ProjectEwn> Ewns { get; set; } = new List<ProjectEwn>();
-        public List<ProjectEstimate> Estimates { get; set; } = new List<ProjectEstimate>();
-        public List<ProjectQuote> Quotes { get; set; } = new List<ProjectQuote>();
         public string Status { get; set; }
         public override string ToString()
         {

@@ -1,8 +1,8 @@
 ﻿@page "/newaddress"
-@using XeppIT.ZoneElectrical.Unclassified
 @using XeppIT.ZoneElectrical.Rolodex.Addresses.Model
 
-@inject NavigationArgs NavigationArgs
+@inject IJSRuntime JsRuntime
+@inject NavigationManager NavigationManager
 @inject RolodexService RolodexService
 
 <Alert @ref="_alertRef" Color="Color.Danger">
@@ -94,13 +94,13 @@
         }
         else
         {
-            NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+            await JsRuntime.InvokeVoidAsync("goBack");
         }
     }
 
-    private void Cancel()
+    private async Task Cancel()
     {
-        NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+        await JsRuntime.InvokeVoidAsync("goBack");
     }
 
     private void ValidateName(ValidatorEventArgs e)

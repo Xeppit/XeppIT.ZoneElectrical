@@ -1,9 +1,10 @@
 ﻿@page "/addresses"
-@using XeppIT.ZoneElectrical.Unclassified
 @using XeppIT.ZoneElectrical.Rolodex.Addresses.Model
+@using XeppIT.ZoneElectrical.Rolodex.Addresses.States
 
+@inject NavigationManager NavigationManager
 @inject RolodexService RolodexService
-@inject NavigationArgs NavigationArgs
+@inject AddressEditState AddressEditState
 
 @if (AddressList == null)
 {
@@ -120,12 +121,13 @@ else
 
     void GoToNewAddressPage()
     {
-        NavigationArgs.NavigateTo("NewAddress", "Addresses");
+        NavigationManager.NavigateTo("NewAddress");
     }
 
     void GoToEditAddressPage(Address address)
     {
-        NavigationArgs.NavigateTo("EditAddress", "Addresses", address);
+        AddressEditState.AddressToEdit = address;
+        NavigationManager.NavigateTo("EditAddress");
     }
 
     async Task Delete(Address address)

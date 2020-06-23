@@ -3,10 +3,13 @@ using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using XeppIT.ZoneElectrical.Rolodex.Addresses.Config;
 using XeppIT.ZoneElectrical.Rolodex.Addresses.Model;
+using XeppIT.ZoneElectrical.Rolodex.Addresses.States;
 using XeppIT.ZoneElectrical.Rolodex.Companies.Config;
 using XeppIT.ZoneElectrical.Rolodex.Companies.Model;
+using XeppIT.ZoneElectrical.Rolodex.Companies.States;
 using XeppIT.ZoneElectrical.Rolodex.Contacts.Config;
 using XeppIT.ZoneElectrical.Rolodex.Contacts.Model;
+using XeppIT.ZoneElectrical.Rolodex.Contacts.States;
 
 namespace XeppIT.ZoneElectrical.Rolodex
 {
@@ -29,6 +32,9 @@ namespace XeppIT.ZoneElectrical.Rolodex
             services.AddScoped(provider => companyCollection);
             services.AddScoped(provider => addressCollection);
             services.AddScoped(provider => contactCollection);
+            services.AddScoped<AddressEditState>();
+            services.AddScoped<CompanyEditState>();
+            services.AddScoped<ContactEditState>();
             services.AddScoped<RolodexService>();
 
             // Set indexes on db

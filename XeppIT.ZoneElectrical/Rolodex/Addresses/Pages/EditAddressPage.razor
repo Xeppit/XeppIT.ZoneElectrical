@@ -1,8 +1,9 @@
 ﻿@page "/editaddress"
-@using XeppIT.ZoneElectrical.Unclassified
 @using XeppIT.ZoneElectrical.Rolodex.Addresses.Model
+@using XeppIT.ZoneElectrical.Rolodex.Addresses.States
 
-@inject NavigationArgs NavigationArgs
+@inject IJSRuntime JsRuntime
+@inject AddressEditState AddressEditState
 @inject RolodexService RolodexService
 
 <Alert @ref="_alertRef" Color="Color.Danger">
@@ -12,7 +13,7 @@
     <AlertDescription>
         Failed to edit the address.
     </AlertDescription>
-    <CloseButton/>
+    <CloseButton />
 </Alert>
 
 <Row>
@@ -82,19 +83,18 @@
 
 @code{
     Alert _alertRef = new Alert();
+
     readonly Address _tempAddress = new Address();
 
     protected override void OnInitialized()
     {
-        if (NavigationArgs.Context != null)
+        if (AddressEditState.AddressToEdit != null)
         {
-            var context = (Address)NavigationArgs.Context;
-
-            _tempAddress.Id = context.Id;
-            _tempAddress.Name = context.Name;
-            _tempAddress.Street = context.Street;
-            _tempAddress.Town = context.Town;
-            _tempAddress.Postcode = context.Postcode;
+            _tempAddress.Id = AddressEditState.AddressToEdit.Id;
+            _tempAddress.Name = AddressEditState.AddressToEdit.Name;
+            _tempAddress.Street = AddressEditState.AddressToEdit.Street;
+            _tempAddress.Town = AddressEditState.AddressToEdit.Town;
+            _tempAddress.Postcode = AddressEditState.AddressToEdit.Postcode;
         }
     }
 
@@ -110,18 +110,20 @@
             }
             else
             {
-                NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+                AddressEditState.AddressToEdit = null;
+                await JsRuntime.InvokeVoidAsync("goBack");
             }
         }
         else
         {
+            AddressEditState.AddressToEdit = null;
             _alertRef.Show();
         }
     }
 
-    private void Cancel()
+    private async Task Cancel()
     {
-        NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+        await JsRuntime.InvokeVoidAsync("goBack");
     }
 
     private void ValidateName(ValidatorEventArgs e)

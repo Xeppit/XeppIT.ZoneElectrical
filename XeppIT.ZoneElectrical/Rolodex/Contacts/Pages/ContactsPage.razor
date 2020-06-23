@@ -1,9 +1,10 @@
 ﻿@page "/contacts"
-@using XeppIT.ZoneElectrical.Unclassified
 @using XeppIT.ZoneElectrical.Rolodex.Contacts.Model
+@using XeppIT.ZoneElectrical.Rolodex.Contacts.States
 
+@inject NavigationManager NavigationManager
 @inject RolodexService RolodexService
-@inject NavigationArgs NavigationArgs
+@inject ContactEditState ContactEditState
 
 @if (ContactList == null)
 {
@@ -45,23 +46,23 @@ else
                                 <TableBody>
                                     @foreach (var contact in ContactList)
                                     {
-                                    <TableRow>
-                                        <TableRowCell>@contact.FirstName</TableRowCell>
-                                        <TableRowCell>@contact.LastName</TableRowCell>
-                                        <TableRowCell>@contact.Email</TableRowCell>
-                                        <TableRowCell>@contact.PhoneNumber</TableRowCell>
-                                        <TableRowCell>@contact.Company</TableRowCell>
-                                        <TableRowCell>
-                                            <Button @onclick="() => GoToEditContactPage(contact)">
-                                                <Icon Name="IconName.Edit" />
-                                            </Button>
-                                        </TableRowCell>
-                                        <TableRowCell>
-                                            <Button @onclick="() => Delete(contact)">
-                                                <Icon Name="IconName.Delete" />
-                                            </Button>
-                                        </TableRowCell>
-                                    </TableRow>
+                                        <TableRow>
+                                            <TableRowCell>@contact.FirstName</TableRowCell>
+                                            <TableRowCell>@contact.LastName</TableRowCell>
+                                            <TableRowCell>@contact.Email</TableRowCell>
+                                            <TableRowCell>@contact.PhoneNumber</TableRowCell>
+                                            <TableRowCell>@contact.Company</TableRowCell>
+                                            <TableRowCell>
+                                                <Button @onclick="() => GoToEditContactPage(contact)">
+                                                    <Icon Name="IconName.Edit" />
+                                                </Button>
+                                            </TableRowCell>
+                                            <TableRowCell>
+                                                <Button @onclick="() => Delete(contact)">
+                                                    <Icon Name="IconName.Delete" />
+                                                </Button>
+                                            </TableRowCell>
+                                        </TableRow>
                                     }
                                 </TableBody>
                             </Table>
@@ -122,12 +123,13 @@ else
 
     void GoToNewContactPage()
     {
-        NavigationArgs.NavigateTo("NewContact", "Contacts");
+        NavigationManager.NavigateTo("NewContact");
     }
 
     void GoToEditContactPage(Contact contact)
     {
-        NavigationArgs.NavigateTo("EditContact", "Contacts", contact);
+        ContactEditState.ContactToEdit = contact;
+        NavigationManager.NavigateTo("EditContact");
     }
 
     async Task Delete(Contact contact)

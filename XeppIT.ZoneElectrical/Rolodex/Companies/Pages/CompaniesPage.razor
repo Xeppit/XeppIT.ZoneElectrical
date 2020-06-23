@@ -1,9 +1,10 @@
 ﻿@page "/companies"
-@using XeppIT.ZoneElectrical.Unclassified
 @using XeppIT.ZoneElectrical.Rolodex.Companies.Model
+@using XeppIT.ZoneElectrical.Rolodex.Companies.States
 
+@inject NavigationManager NavigationManager
 @inject RolodexService RolodexService
-@inject NavigationArgs NavigationArgs
+@inject CompanyEditState CompanyEditState
 
 @if (CompanyList == null)
 {
@@ -114,12 +115,13 @@ else
 
     void GoToNewCompanyPage()
     {
-        NavigationArgs.NavigateTo("NewCompany", "Companies");
+        NavigationManager.NavigateTo("NewCompany");
     }
 
     void GoToEditCompanyPage(Company company)
     {
-        NavigationArgs.NavigateTo("EditCompany", "Companies", company);
+        CompanyEditState.CompanyToEdit = company;
+        NavigationManager.NavigateTo("EditCompany");
     }
 
     async Task Delete(Company company)

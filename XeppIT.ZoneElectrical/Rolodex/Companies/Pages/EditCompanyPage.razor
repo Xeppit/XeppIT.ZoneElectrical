@@ -1,8 +1,9 @@
 ﻿@page "/editcompany"
-@using XeppIT.ZoneElectrical.Unclassified
 @using XeppIT.ZoneElectrical.Rolodex.Companies.Model
+@using XeppIT.ZoneElectrical.Rolodex.Companies.States
 
-@inject NavigationArgs NavigationArgs
+@inject IJSRuntime JsRuntime
+@inject CompanyEditState CompanyEditState
 @inject RolodexService RolodexService
 
 <Alert @ref="_alertRef" Color="Color.Danger">
@@ -50,12 +51,10 @@
 
     protected override void OnInitialized()
     {
-        if (NavigationArgs.Context != null)
+        if (CompanyEditState.CompanyToEdit != null)
         {
-            var context = (Company)NavigationArgs.Context;
-
-            _tempCompany.Id = context.Id;
-            _tempCompany.Name = context.Name;
+            _tempCompany.Id = CompanyEditState.CompanyToEdit.Id;
+            _tempCompany.Name = CompanyEditState.CompanyToEdit.Name;
         }
     }
 
@@ -71,7 +70,7 @@
             }
             else
             {
-                NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+                await JsRuntime.InvokeVoidAsync("goBack");
             }
         }
         else
@@ -80,9 +79,9 @@
         }
     }
 
-    private void Cancel()
+    private async Task Cancel()
     {
-        NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+        await JsRuntime.InvokeVoidAsync("goBack");
     }
 
     private void ValidateName(ValidatorEventArgs e)

@@ -1,11 +1,11 @@
 ﻿@page "/newcontact"
-@using XeppIT.ZoneElectrical.Unclassified
 @using XeppIT.ZoneElectrical.Rolodex.Contacts.Model
 @using Blazorise.Components
 @using XeppIT.ZoneElectrical.Rolodex.Companies.Model
 @using XeppIT.ZoneElectrical.Rolodex.Companies.Pages
 
-@inject NavigationArgs NavigationArgs
+@inject IJSRuntime JsRuntime
+@inject NavigationManager NavigationManager
 @inject RolodexService RolodexService
 
 <Alert @ref="_alertRef" Color="Color.Danger">
@@ -110,7 +110,6 @@
     protected override async Task OnInitializedAsync()
     {
         _companyList = await RolodexService.FindAllCompaniesAsync();
-        SelectedListValueChanged("Morgan Sindall");
     }
 
     void SelectedListValueChanged(string newValue)
@@ -136,13 +135,13 @@
         }
         else
         {
-            NavigationArgs.NavigateTo("Contacts");
+            await JsRuntime.InvokeVoidAsync("goBack");
         }
     }
 
-    private void Cancel()
+    private async Task Cancel()
     {
-        NavigationArgs.NavigateTo(NavigationArgs.ReturnUrl);
+        await JsRuntime.InvokeVoidAsync("goBack");
     }
 
     private void ValidateFirstName(ValidatorEventArgs e)
@@ -182,7 +181,7 @@
 
     private void CreateNewCompany()
     {
-        NavigationArgs.NavigateTo("NewCompany", "NewContact");
+        NavigationManager.NavigateTo("NewCompany");
     }
 
 }

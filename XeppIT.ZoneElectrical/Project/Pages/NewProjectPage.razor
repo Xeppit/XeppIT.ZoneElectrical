@@ -1,5 +1,278 @@
-﻿<h3>NewProjectPage</h3>
+﻿@page "/newproject"
+@using XeppIT.ZoneElectrical.Rolodex.Contacts.Model
+@using XeppIT.ZoneElectrical.Rolodex.Companies.Model
+@using XeppIT.ZoneElectrical.Project.States
+@using XeppIT.ZoneElectrical.Rolodex
+@using XeppIT.ZoneElectrical.Rolodex.Addresses.Model
+@using XeppIT.ZoneElectrical.Project.Models
 
-@code {
+@inject IJSRuntime JsRuntime
+@inject RolodexService RolodexService
+@inject ProjectManager ProjectManager
+@inject NavigationManager NavigationManager
+@inject ProjectEditState ProjectEditState
+
+@if (_addressList == null || _companyList == null || _contactList == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <Row>
+        <Column>
+            <Card Margin="Margin.Is4.OnY">
+                <CardHeader>
+                    <CardTitle>Create New Project</CardTitle>
+                </CardHeader>
+                <CardBody>
+                    <Field>
+                        <FieldLabel>Select Address</FieldLabel>
+                        <FieldBody>
+                            <Addons>
+                                <Addon AddonType="AddonType.Body">
+                                    <Select TValue="string" SelectedValue="@SelectedAddressListValue" SelectedValueChanged="@SelectedAddressListValueChanged">
+                                        <SelectItem Value="_notSpecified">@_notSpecified</SelectItem>
+                                        @foreach (var address in _addressList)
+                                        {
+                                            <SelectItem Value="@address.ToString()">@address.ToString()</SelectItem>
+                                        }
+                                    </Select>
+                                </Addon>
+                                <Addon AddonType="AddonType.End">
+                                    <Button Color="Color.Primary" @onclick="CreateNewAddress">Create New</Button>
+                                </Addon>
+                            </Addons>
+                        </FieldBody>
+                    </Field>
+                    <Field>
+                        <FieldLabel>Select Company</FieldLabel>
+                        <FieldBody>
+                            <Addons>
+                                <Addon AddonType="AddonType.Body">
+                                    <Select TValue="string" SelectedValue="@SelectedCompanyListValue" SelectedValueChanged="@SelectedCompanyListValueChanged">
+                                        <SelectItem Value="_notSpecified">@_notSpecified</SelectItem>
+                                        @foreach (var company in _companyList)
+                                        {
+                                            <SelectItem Value="@company.Name">@company.Name</SelectItem>
+                                        }
+                                    </Select>
+                                </Addon>
+                                <Addon AddonType="AddonType.End">
+                                    <Button Color="Color.Primary" @onclick="CreateNewCompany">Create New</Button>
+                                </Addon>
+                            </Addons>
+                        </FieldBody>
+                    </Field>
+                    <Field>
+                        <FieldLabel>Select Contact</FieldLabel>
+                        <FieldBody>
+                            <Addons>
+                                <Addon AddonType="AddonType.Body">
+                                    <Select TValue="string" SelectedValue="@SelectedContactListValue" SelectedValueChanged="@SelectedContactListValueChanged">
+                                        <SelectItem Value="_notSpecified">@_notSpecified</SelectItem>
+                                        @foreach (var contact in _contactList)
+                                        {
+                                            <SelectItem Value="@contact.ToString()">@contact.ToString()</SelectItem>
+                                        }
+                                    </Select>
+                                </Addon>
+                                <Addon AddonType="AddonType.End">
+                                    <Button Color="Color.Primary" @onclick="CreateNewContact">Create New</Button>
+                                </Addon>
+                            </Addons>
+                        </FieldBody>
+                    </Field>
+                    <Field>
+                        <FieldLabel>Work Description</FieldLabel>
+                        <Validation Validator="@ValidateFirstName">
+                            <TextEdit Placeholder="Enter first name" @bind-Text="@_tempProject.WorkDescription">
+                                <Feedback>
+                                    <ValidationNone>Please enter the first name.</ValidationNone>
+                                    <ValidationSuccess>First Name is good.</ValidationSuccess>
+                                    <ValidationError>Enter valid first name!</ValidationError>
+                                </Feedback>
+                            </TextEdit>
+                        </Validation>
+                    </Field>
+                    <Field>
+                        <FieldLabel>Select Status</FieldLabel>
+                        <FieldBody>
+                            <Select TValue="string" SelectedValue="@SelectedStatusListValue" SelectedValueChanged="@SelectedStatusListValueChanged">
+                                    @foreach (var status in _projectStatusArray)
+                                    {
+                                        <SelectItem Value="status.ToString()">@status.ToString()</SelectItem>
+                                    }
+                                </Select>
+                        </FieldBody>
+                    </Field>
+                </CardBody>
+                <CardFooter>
+                    <Button @onclick="Save">Save</Button>
+                    <Button @onclick="Cancel">Cancel</Button>
+                </CardFooter>
+            </Card>
+        </Column>
+    </Row>
+}
+
+@code{
+    Alert _alertRef = new Alert();
+    readonly ProjectModel _tempProject = new ProjectModel();
+    string _notSpecified = "Not Specified";
+
+    List<Address> _addressList = new List<Address>();
+    List<Company> _companyList = new List<Company>();
+    List<Contact> _contactList = new List<Contact>();
+    Array _projectStatusArray = Enum.GetValues(typeof(ProjectStatusEnum));
+
+    string SelectedAddressListValue { get; set; }
+    string SelectedCompanyListValue { get; set; }
+    string SelectedContactListValue { get; set; }
+    string SelectedStatusListValue { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        _addressList = await RolodexService.FindAllAddressesAsync();
+        _companyList = await RolodexService.FindAllCompaniesAsync();
+        _contactList = await RolodexService.FindAllContactsAsync();
+
+        if (ProjectEditState.ProjectToEdit != null)
+        {
+            SelectedAddressListValue = ProjectEditState.ProjectToEdit.ProjectAddress.ToString();
+            _tempProject.ProjectAddress = ProjectEditState.ProjectToEdit.ProjectAddress;
+
+            _tempProject.WorkDescription = ProjectEditState.ProjectToEdit.WorkDescription;
+
+            SelectedCompanyListValue = ProjectEditState.ProjectToEdit.Company;
+            _tempProject.Company = ProjectEditState.ProjectToEdit.Company;
+
+            SelectedContactListValue = ProjectEditState.ProjectToEdit.Client.ToString();
+            _tempProject.Client = ProjectEditState.ProjectToEdit.Client;
+
+            SelectedStatusListValue = ProjectEditState.ProjectToEdit.Status;
+            _tempProject.Status = ProjectEditState.ProjectToEdit.Status;
+        }
+        else
+        {
+            ProjectEditState.ProjectToEdit = new ProjectModel();
+            _tempProject.Status = ProjectStatusEnum.Estimate.ToString();
+        }
+    }
+
+    void SelectedAddressListValueChanged(string newValue)
+    {
+        SelectedAddressListValue = newValue;
+
+        _tempProject.ProjectAddress = _addressList.FirstOrDefault(a => a.ToString() == newValue);
+
+        ProjectEditState.ProjectToEdit.ProjectAddress = _addressList.FirstOrDefault(a => a.ToString() == newValue);
+    }
+
+    async Task SelectedCompanyListValueChanged(string newValue)
+    {
+        SelectedCompanyListValue = newValue;
+
+        _tempProject.Company = newValue;
+
+        ProjectEditState.ProjectToEdit.Company = newValue;
+
+        _contactList.Clear();
+        foreach (var contact in await RolodexService.FindAllContactsByCompanyAsync(newValue))
+        {
+            _contactList.Add(contact);
+        }
+    }
+
+    void SelectedContactListValueChanged(string newValue)
+    {
+        SelectedContactListValue = newValue;
+        ProjectEditState.ProjectToEdit.Client = _contactList.FirstOrDefault(c => c.ToString() == newValue);
+        _tempProject.Client = _contactList.FirstOrDefault(c => c.ToString() == newValue);
+    }
+
+    void SelectedStatusListValueChanged(string newValue)
+    {
+        SelectedStatusListValue = newValue;
+        ProjectEditState.ProjectToEdit.Status = newValue;
+        _tempProject.Status = newValue;
+    }
+
+    private async Task Save()
+    {
+        if (_tempProject.ProjectAddress == null ||
+            string.IsNullOrEmpty(_tempProject.Company) || _tempProject.Company == "Not Specified" ||
+            _tempProject.Client == null)
+        {
+            return;
+        }
+
+        var result = await ProjectManager.CreateProjectAsync(_tempProject);
+
+        if (result == -1)
+        {
+            _alertRef.Show();
+        }
+        else
+        {
+            ProjectEditState.ProjectToEdit = null;
+            await JsRuntime.InvokeVoidAsync("goBack");
+        }
+    }
+
+    private async Task Cancel()
+    {
+        ProjectEditState.ProjectToEdit = null;
+        await JsRuntime.InvokeVoidAsync("goBack");
+    }
+
+    private void ValidateFirstName(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void ValidateLastName(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void ValidateEmail(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void ValidatePhoneNumber(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void ValidateCompany(ValidatorEventArgs e)
+    {
+        var value = Convert.ToString(e.Value);
+
+        e.Status = string.IsNullOrEmpty(value) ? ValidationStatus.None : ValidationStatus.Success;
+    }
+
+    private void CreateNewAddress()
+    {
+        NavigationManager.NavigateTo("NewAddress");
+    }
+
+    private void CreateNewCompany()
+    {
+        NavigationManager.NavigateTo("NewCompany");
+    }
+
+    private void CreateNewContact()
+    {
+        NavigationManager.NavigateTo("NewContact");
+    }
 
 }

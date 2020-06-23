@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using XeppIT.ZoneElectrical.Project.Models;
+using XeppIT.ZoneElectrical.Rolodex.Addresses.Model;
+using XeppIT.ZoneElectrical.Rolodex.Contacts.Model;
 
 namespace XeppIT.ZoneElectrical.Project
 {
@@ -83,7 +85,7 @@ namespace XeppIT.ZoneElectrical.Project
             return result.DeletedCount > 0;
         }
 
-        public async Task<bool> AddProjectManagerAsync(ProjectModel project, ProjectContact projectManager)
+        public async Task<bool> AddProjectManagerAsync(ProjectModel project, Contact projectManager)
         {
             project.Client = projectManager;
 
@@ -111,7 +113,7 @@ namespace XeppIT.ZoneElectrical.Project
             return result.ModifiedCount > 0;
         }
 
-        public async Task<bool> AddProjectAddressAsync(ProjectModel project, ProjectAddress projectAddress)
+        public async Task<bool> AddProjectAddressAsync(ProjectModel project, Address projectAddress)
         {
             project.ProjectAddress = projectAddress;
 

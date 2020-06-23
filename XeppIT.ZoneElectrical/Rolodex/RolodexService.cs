@@ -197,7 +197,6 @@ namespace XeppIT.ZoneElectrical.Rolodex
             var result = await _contactCollection.Find(filter).FirstOrDefaultAsync();
             return result;
         }
-        // Todo Needs refactoring badly
         public async Task<List<Contact>> FindAllContactsByNameAsync(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -207,7 +206,15 @@ namespace XeppIT.ZoneElectrical.Rolodex
                 _ => _.Email.ToLower().Contains(name.ToLower())).ToListAsync();
             return result;
         }
+        public async Task<List<Contact>> FindAllContactsByCompanyAsync(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return await FindAllContactsAsync();
 
+            var result = await GetFiltered(_contactCollection,
+                _ => _.Company.ToLower().Contains(name.ToLower())).ToListAsync();
+            return result;
+        }
         public async Task<ReplaceOneResult> UpdateContactAsync(Contact contact)
         {
             contact.FirstName = contact.FirstName.Trim();

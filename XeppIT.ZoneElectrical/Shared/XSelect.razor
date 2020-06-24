@@ -1,0 +1,42 @@
+﻿@typeparam TItem
+
+    <select class="@CustomCss @_isValid" id="@Id" @onchange="@HandleInput" SelectedValue="@SelectedValue">
+        @foreach (var item in Data)
+        {
+        <option value="@item">@item.ToString()</option>
+
+        }
+    </select>
+
+@code {
+    private string _isValid;
+    private string _validationMessage = "";
+    private string _selectedValue = "";
+
+    [Parameter]
+    public string Id { get; set; }
+
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public string CustomCss { get; set; }
+
+    [Parameter]
+    public IEnumerable<TItem> Data { get; set; }
+
+    [Parameter]
+    public string SelectedValue { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; }
+
+    [Parameter]
+    public Func<string, string> ValidationRule { get; set; }
+
+    private async Task HandleInput(ChangeEventArgs e)
+    {
+        await ValueChanged.InvokeAsync(e.Value.ToString());
+    }
+
+}

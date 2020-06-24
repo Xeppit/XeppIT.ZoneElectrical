@@ -1,8 +1,56 @@
 ﻿@page "/"
 
+
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
 
+<XInput Id="name" Label="Raaaa" Placeholder="" CustomCss="" @bind-value="boobs" ValidationRule="@ValidationRule" ></XInput>
+<label>@boobs</label>
+
+<XSelect SelectedValue="@boobs2" Data="@list" TItem=Model>
+    
+</XSelect>
+<label>@boobs2</label>
+
+@code {
+
+    private string boobs = "";
+
+    string ValidationRule(string input)
+    {
+        if (input.Contains("@"))
+        {
+            return "Input cannot contain @";
+        }
+
+        return "";
+    }
+
+    private string boobs2 = "";
+
+    IEnumerable<Model> list;
+
+    protected override void OnInitialized()
+    {
+        list = new List<Model>()
+        {
+            new Model() { a = Guid.NewGuid().ToString(), b = Guid.NewGuid().ToString(), c = Guid.NewGuid().ToString() },
+        new Model() { a = Guid.NewGuid().ToString(), b = Guid.NewGuid().ToString(), c = Guid.NewGuid().ToString() },
+        new Model() { a = Guid.NewGuid().ToString(), b = Guid.NewGuid().ToString(), c = Guid.NewGuid().ToString() }
+        };
+    }
+
+    public class Model
+    {
+        public string a { get; set; }
+        public string b { get; set; }
+        public string c { get; set; }
+        public override string ToString()
+        {
+            return a;
+        }
+    }
+}

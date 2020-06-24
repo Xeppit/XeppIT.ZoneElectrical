@@ -1,0 +1,57 @@
+﻿<div class="XInput">
+    <label for="@Id">@Label</label>
+    <input class="form-control @CustomCss @_isValid" id="@Id" placeholder="@Placeholder" value="@Value" @oninput="HandleInput">
+    <div class="invalid-feedback">
+        @_validationMessage
+    </div>
+</div>
+
+@code {
+    private string _isValid;
+    private string _validationMessage = "";
+
+    [Parameter]
+    public string Id { get; set; }
+
+    [Parameter]
+    public string Label { get; set; }
+
+    [Parameter]
+    public string Placeholder { get; set; } = "";
+
+    [Parameter]
+    public string CustomCss { get; set; }
+
+    [Parameter]
+    public string Value { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set; }
+
+    [Parameter]
+    public Func<string, string> ValidationRule { get; set; }
+
+    private async Task HandleInput(ChangeEventArgs args)
+    {
+        if (string.IsNullOrEmpty(args.Value.ToString()))
+        {
+            _isValid = "";
+        }
+        else
+        {
+            var result = ValidationRule(args.Value.ToString());
+
+            if (result == "")
+            {
+                _isValid = " is-valid";
+            }
+            else
+            {
+                _isValid = " is-invalid";
+                _validationMessage = result;
+            }
+        }
+
+        await ValueChanged.InvokeAsync(args.Value.ToString());
+    }
+}

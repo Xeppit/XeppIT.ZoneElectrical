@@ -1,42 +1,70 @@
 ﻿@typeparam TItem
 
-    <select class="@CustomCss @_isValid" id="@Id" @onchange="@HandleInput" SelectedValue="@SelectedValue">
-        @foreach (var item in Data)
+    <div class="form-group">
+        <select class="form-control @CustomCss @_isValid" id="@Id" @onchange="@HandleInput" SelectedValue="@ListSelectedValue">
+            <option value="@PlaceHolder">@PlaceHolder</option>
+            @foreach (var item in Data)
+            {
+                <option value="@item">@item.ToString()</option>
+            }
+        </select>
+        <div class="invalid-feedback">
+            @_validationMessage
+        </div>
+    </div>
+
+    @code {
+        private string _isValid = " is-invalid";
+        private string _validationMessage = "Please select a value.";
+        private string _selectedValue = "";
+
+        [Parameter]
+        public string Id { get; set; }
+
+        [Parameter]
+        public string Label { get; set; }
+
+        [Parameter]
+        public string CustomCss { get; set; }
+
+        [Parameter]
+        public string PlaceHolder { get; set; } = "";
+
+        [Parameter]
+        public IEnumerable<TItem> Data { get; set; }
+
+        [Parameter]
+        public TItem ListSelectedValue { get; set; }
+
+        [Parameter]
+        public EventCallback<TItem> ListSelectedValueChanged { get; set; }
+
+        [Parameter]
+        public Func<TItem, string> ValidationRule { get; set; }
+
+        private async Task HandleInput(ChangeEventArgs e)
         {
-        <option value="@item">@item.ToString()</option>
+            if (e.Value.ToString() != PlaceHolder)
+            {
+                ListSelectedValue = Data.FirstOrDefault(d => d.ToString() == e.Value.ToString());
+                await ListSelectedValueChanged.InvokeAsync(ListSelectedValue);
+            }
+            else
+            {
+                ListSelectedValue = default(TItem);
+                _isValid = " is-invalid";
+            }
 
+            var result = ValidationRule(ListSelectedValue);
+
+            if (result == "")
+            {
+                _isValid = " is-valid";
+            }
+            else
+            {
+                _isValid = " is-invalid";
+                _validationMessage = result;
+            }
         }
-    </select>
-
-@code {
-    private string _isValid;
-    private string _validationMessage = "";
-    private string _selectedValue = "";
-
-    [Parameter]
-    public string Id { get; set; }
-
-    [Parameter]
-    public string Label { get; set; }
-
-    [Parameter]
-    public string CustomCss { get; set; }
-
-    [Parameter]
-    public IEnumerable<TItem> Data { get; set; }
-
-    [Parameter]
-    public string SelectedValue { get; set; }
-
-    [Parameter]
-    public EventCallback<string> ValueChanged { get; set; }
-
-    [Parameter]
-    public Func<string, string> ValidationRule { get; set; }
-
-    private async Task HandleInput(ChangeEventArgs e)
-    {
-        await ValueChanged.InvokeAsync(e.Value.ToString());
     }
-
-}

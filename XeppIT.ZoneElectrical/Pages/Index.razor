@@ -7,19 +7,20 @@ Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
 
-<XInput Id="name" Label="Raaaa" Placeholder="" CustomCss="" @bind-value="boobs" ValidationRule="@ValidationRule" ></XInput>
+<XInput Id="name" Label="Raaaa" Placeholder="" CustomCss="" @bind-value="boobs" ValidationRule="@InputValidationRule" ></XInput>
 <label>@boobs</label>
 
-<XSelect SelectedValue="@boobs2" Data="@list" TItem=Model>
+<XSelect @bind-ListSelectedValue="@SelectedValue" Data="@list" TItem=Model ValidationRule="@SelectValidationRule" />
     
-</XSelect>
-<label>@boobs2</label>
+
+
+<label>@SelectedValue.ToString()</label>
 
 @code {
 
     private string boobs = "";
 
-    string ValidationRule(string input)
+    string InputValidationRule(string input)
     {
         if (input.Contains("@"))
         {
@@ -29,7 +30,17 @@ Welcome to your new app.
         return "";
     }
 
-    private string boobs2 = "";
+    string SelectValidationRule(Model input)
+    {
+        if (input == null)
+        {
+            return "Please select a value.";
+        }
+
+        return "";
+    }
+
+    private Model SelectedValue { get; set; } = new Model();
 
     IEnumerable<Model> list;
 
@@ -53,4 +64,7 @@ Welcome to your new app.
             return a;
         }
     }
+
+    
+
 }

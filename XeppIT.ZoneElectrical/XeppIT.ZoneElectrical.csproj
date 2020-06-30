@@ -20,4 +20,8 @@
     <Folder Include="Shared\CustomComponents\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\XeppIT.SimpleBlazorBootstrap\XeppIT.SimpleBlazorBootstrap\XeppIT.SimpleBlazorBootstrap.csproj" />
+  </ItemGroup>
+
 </Project>

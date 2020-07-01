@@ -7,15 +7,13 @@ Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
 
-<XInput Id="name" Label="Raaaa" Placeholder="" CustomCss="" @bind-value="boobs" ValidationRule="@InputValidationRule" ></XInput>
+<SBBInput Id="id1" Label="Raaaa" Placeholder="placeholder" CustomCss="" @bind-value="boobs" ValidationRule="@InputValidationRule" ></SBBInput>
 <label>@boobs</label>
 
-<XSelect @bind-ListSelectedValue="@SelectedValue" Data="@list" TItem=Model ValidationRule="@SelectValidationRule" />
-
-<Component1></Component1>
-
+<SBBSelect Id="id2" Label="Raaaa" Placeholder="placeholder" CustomCss="" @bind-ListSelectedValue="@SelectedValue" Data="@list" TItem=Model ValidationRule="@SelectValidationRule" />
 
 <label>@SelectedValue.ToString()</label>
+<Button Color="Color.Primary" @onclick="AddNewThingy">Create New</Button>
 
 @code {
 
@@ -43,15 +41,15 @@ Welcome to your new app.
 
     private Model SelectedValue { get; set; } = new Model();
 
-    IEnumerable<Model> list;
+    List<Model> list;
 
     protected override void OnInitialized()
     {
         list = new List<Model>()
         {
             new Model() { a = Guid.NewGuid().ToString(), b = Guid.NewGuid().ToString(), c = Guid.NewGuid().ToString() },
-        new Model() { a = Guid.NewGuid().ToString(), b = Guid.NewGuid().ToString(), c = Guid.NewGuid().ToString() },
-        new Model() { a = Guid.NewGuid().ToString(), b = Guid.NewGuid().ToString(), c = Guid.NewGuid().ToString() }
+            new Model() { a = Guid.NewGuid().ToString(), b = Guid.NewGuid().ToString(), c = Guid.NewGuid().ToString() },
+            new Model() { a = Guid.NewGuid().ToString(), b = Guid.NewGuid().ToString(), c = Guid.NewGuid().ToString() }
         };
     }
 
@@ -60,12 +58,16 @@ Welcome to your new app.
         public string a { get; set; }
         public string b { get; set; }
         public string c { get; set; }
+
         public override string ToString()
         {
             return a;
         }
     }
 
-    
+    private void AddNewThingy()
+    {
+        list.Add(new Model() { a = Guid.NewGuid().ToString(), b = Guid.NewGuid().ToString(), c = Guid.NewGuid().ToString() });
+    }
 
 }
